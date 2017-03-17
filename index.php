@@ -1,15 +1,25 @@
 <?php
 $a = mysqli_connect("127.0.0.1", "root", "", "bilibili");
+$categoris_html = "";
 //var_dump($a);
 $sql = "SELECT
-animation_detail.`name`
+categoris.`name`,
+categoris.id,
+categoris.visit_count,
+categoris.daily_count
 FROM
-animation_detail
-WHERE
-animation_detail.`name` LIKE \"%王%\"
-";
-$result = mysqli_fetch_all(mysqli_query($a, $sql));
+categoris";
+$result = mysqli_fetch_all(mysqli_query($a, $sql), MYSQLI_ASSOC);
 //var_dump($result);
+foreach ($result as $key => $value) {
+//    echo $value["name"];
+    $categoris_html .= '<li role="presentation">
+            <a href="#" style="text-align: center;"><span class="label label-info">' . $value["daily_count"] . '</span>
+                <div>' . $value["name"] . '</div>
+            </a>
+        </li>';
+}
+//echo $categoris_html;
 ?>
 <!DOCTYPE html>
 <html lang="zh-CN">
@@ -29,7 +39,11 @@ $result = mysqli_fetch_all(mysqli_query($a, $sql));
     <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-</head>
+    <style>
+        h4 {
+            margin-top: 19px;
+        }
+    </style>
 </head>
 <body>
 <nav class="navbar navbar-default" style="margin-bottom:0px;">
@@ -80,31 +94,127 @@ $result = mysqli_fetch_all(mysqli_query($a, $sql));
 </div>
 
 <div class="container">
-    <!-- Standard button -->
-    <button type="button" class="btn btn-default btn-lg">（默认样式）Default</button>
-    <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Star
-    </button>
+    <div class="row">
+        <div class="col-md-8">
+            <ul class="nav nav-pills">
+                <li role="presentation">
+                    <a href="#" style="text-align: center;"> <span class="glyphicon glyphicon-home"></span>
 
-    <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
-    <button type="button" class="btn btn-primary">（首选项）Primary</button>
+                        <div>首页</div>
+                    </a>
+                </li>
+                <?php
+                echo $categoris_html;
+                ?>
+            </ul>
+        </div>
+        <div class="col-md-1">
+            <a href="#">
+                <h4><span class="glyphicon glyphicon-road"></span>&nbsp;广场
+                </h4>
 
-    <!-- Indicates a successful or positive action -->
-    <button type="button" class="btn btn-success">（成功）Success</button>
+            </a>
+        </div>
+        <div class="col-md-1">
+            <a href="#">
+                <h4><span class="glyphicon glyphicon-facetime-video"></span>&nbsp;直播
+                </h4>
 
-    <!-- Contextual button for informational alert messages -->
-    <button type="button" class="btn btn-info">（一般信息）Info</button>
+            </a>
+        </div>
+        <div class="col-md-1">
+            <a href="#">
+                <h4><span class="glyphicon glyphicon-minus-sign"></span>黑屋
+                </h4>
 
-    <!-- Indicates caution should be taken with this action -->
-    <button type="button" class="btn btn-warning">（警告）Warning</button>
-
-    <!-- Indicates a dangerous or potentially negative action -->
-    <button type="button" class="btn btn-danger">（危险）Danger</button>
-
-    <!-- Deemphasize a button by making it look like a link while maintaining button behavior -->
-    <button type="button" class="btn btn-link">（链接）Link</button>
+            </a>
+        </div>
+        <div class="col-md-1">
+            <img src="//i2.hdslb.com/bfs/active/74952c377ad1a128b8f1c6da171366e826207848.gif" alt="催泪向">
+        </div>
+    </div>
 
 
+    <div class="row">
+        <div class="col-md-5">
+            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
+                    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                </ol>
+
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner" role="listbox">
+                    <div class="item active">
+                        <img src="images/preview/gintama.png" class="carousel-inner img-responsive img-rounded">
+
+                        <div class="carousel-caption">
+                            ...
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img src="images/preview/naruto.png" class="carousel-inner img-responsive img-rounded">
+
+                        <div class="carousel-caption">
+                            ...
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img src="images/preview/Yu-Gi-Oh!.png" class="carousel-inner img-responsive img-rounded">
+
+                        <div class="carousel-caption">
+                            ...
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Controls -->
+                <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+        <div class="col-md-7">
+            <div class="row">
+                <div class="col-md-4">
+                    <img class="bili-item-img img-responsive img-rounded" src="images/cover/gintama.png">
+
+                    <div class="bili-item" style="background-color: black; opacity: 0.5;text-align: center;position:absolute;
+                    height: 100%;top: 0;left: 15px;right: 15px;color: #FFF;display: none;">
+                        <p style="margin-top: 10px">啊啊啊啊啊</p>
+
+                        <p style="margin-top: 30px;text-align: left;margin-left: 10px">up主:坂田银时</p>
+
+                        <p style="margin-top: 5px;text-align: left;margin-left: 10px">播放数:111</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script>
+    $(".bili-item-img,.bili-item").mouseover(function () {
+        $(".bili-item").css("display", "block");
+    });
+    $(".bili-item-img,.bili-item").mouseleave(function () {
+        $(".bili-item").css("display", "none");
+    });
+</script>
+
 </body>
 </html>
 
