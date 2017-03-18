@@ -10,16 +10,50 @@ categoris.daily_count
 FROM
 categoris";
 $result = mysqli_fetch_all(mysqli_query($a, $sql), MYSQLI_ASSOC);
-//var_dump($result);
+//echo (json_encode($result,JSON_UNESCAPED_UNICODE));
 foreach ($result as $key => $value) {
 //    echo $value["name"];
-    $categoris_html .= '<li role="presentation">
+    $categoris_html .= '<li>
             <a href="#" style="text-align: center;"><span class="label label-info">' . $value["daily_count"] . '</span>
                 <div>' . $value["name"] . '</div>
             </a>
         </li>';
 }
 //echo $categoris_html;
+$title_html = "";
+$sql = "SELECT
+animation_detail.image_name,
+animation_detail.fav_count,
+animation_detail.coin_count,
+animation_detail.click_count,
+animation_detail.update_time,
+animation_detail.`name`,
+animation_detail.comment_count,
+animation_detail.id
+FROM
+animation_detail
+LIMIT 6";
+$result = mysqli_fetch_all(mysqli_query($a, $sql), MYSQLI_ASSOC);
+foreach ($result as $value) {
+
+    $title_html .= '<div class="col-md-4">
+                    <div style="margin-bottom: 10px;">
+                        <a href="#" style="width: 185px;">
+                            <img class="bili-item-img img-responsive img-rounded" src="images/cover/' . $value['image_name'] . '.png">
+
+                            <div class="bili-item" style="background-color: black; opacity: 0.5;text-align: center;position:absolute;
+                          bottom: 10px; top: 0;left: 15px;right: 15px;color: #FFF;display: none;">
+                                <p style="margin-top: 10px">' . $value['name'] . '</p>
+
+                                <p style="margin-top: 30px;text-align: left;margin-left: 10px">up主:坂田银时</p>
+
+                                <p style="margin-top: 5px;text-align: left;margin-left: 10px">播放数:' . $value['click_count'] . '</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>';
+}
+//echo $title_html;
 ?>
 <!DOCTYPE html>
 <html lang="zh-CN">
@@ -184,18 +218,9 @@ foreach ($result as $key => $value) {
         </div>
         <div class="col-md-7">
             <div class="row">
-                <div class="col-md-4">
-                    <img class="bili-item-img img-responsive img-rounded" src="images/cover/gintama.png">
-
-                    <div class="bili-item" style="background-color: black; opacity: 0.5;text-align: center;position:absolute;
-                    height: 100%;top: 0;left: 15px;right: 15px;color: #FFF;display: none;">
-                        <p style="margin-top: 10px">啊啊啊啊啊</p>
-
-                        <p style="margin-top: 30px;text-align: left;margin-left: 10px">up主:坂田银时</p>
-
-                        <p style="margin-top: 5px;text-align: left;margin-left: 10px">播放数:111</p>
-                    </div>
-                </div>
+                <?php
+                echo $title_html;
+                ?>
             </div>
         </div>
     </div>
@@ -206,14 +231,24 @@ foreach ($result as $key => $value) {
 <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 <script>
-    $(".bili-item-img,.bili-item").mouseover(function () {
-        $(".bili-item").css("display", "block");
+    $(".bili-item-img").mouseover(function () {
+//        ???
+        $(this).siblings(".bili-item").css("display", "block");
     });
-    $(".bili-item-img,.bili-item").mouseleave(function () {
-        $(".bili-item").css("display", "none");
+    $(".bili-item").mouseleave(function () {
+        $(this).css("display", "none");
     });
 </script>
+
+
+<ul class="nav nav-pills nav-stacked">
+    <li role="presentation" class="active"><a href="#">Home</a></li>
+    <li role="presentation"><a href="#">Profile</a></li>
+    <li role="presentation"><a href="#">Messages</a></li>
+</ul>
+
 
 </body>
 </html>
