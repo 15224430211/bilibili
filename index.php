@@ -37,21 +37,17 @@ $result = mysqli_fetch_all(mysqli_query($a, $sql), MYSQLI_ASSOC);
 foreach ($result as $value) {
 
     $title_html .= '<div class="col-md-4">
-                    <div style="margin-bottom: 10px;">
-                        <a href="#" style="width: 185px;">
+                      <div class="bili-item">
+                        <a href="#">
                             <img class="bili-item-img img-responsive img-rounded" src="images/cover/' . $value['image_name'] . '.png">
-
-                            <div class="bili-item" style="background-color: black; opacity: 0.5;text-align: center;position:absolute;
-                          bottom: 10px; top: 0;left: 15px;right: 15px;color: #FFF;display: none;">
-                                <p style="margin-top: 10px">' . $value['name'] . '</p>
-
-                                <p style="margin-top: 30px;text-align: left;margin-left: 10px">up主:坂田银时</p>
-
-                                <p style="margin-top: 5px;text-align: left;margin-left: 10px">播放数:' . $value['click_count'] . '</p>
+                            <div class="bili-item-mask">
+                                <p>' . $value['name'] . '</p>
+                                <p>up主:坂田银时</p>
+                                <p>播放数:' . $value['click_count'] . '</p>
                             </div>
                         </a>
-                    </div>
-                </div>';
+                      </div>
+                    </div>';
 }
 //echo $title_html;
 ?>
@@ -73,11 +69,9 @@ foreach ($result as $value) {
     <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <style>
-        h4 {
-            margin-top: 19px;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="assets/style.css"/>
+    <style></style>
+
 </head>
 <body>
 <nav class="navbar navbar-default" style="margin-bottom:0px;">
@@ -102,10 +96,8 @@ foreach ($result as $value) {
     </div><!-- /.container-fluid -->
 </nav>
 
-<div style="height: 170px; background: transparent no-repeat center -10px;
-   background-image:url(http://i0.hdslb.com/bfs/archive/4f59bf959d51592016e07efe62969c411288826a.png);
-         ;">
-    <div class="container" style="padding-top: 120px;">
+<div class="top-background">
+    <div class="container">
         <div class="row">
             <div class="col-md-4 col-md-offset-8">
                 <div class="row">
@@ -114,7 +106,7 @@ foreach ($result as $value) {
                             <span class="glyphicon glyphicon glyphicon-stats"></span>&nbsp;排行榜
                         </a>
                     </div>
-                    <div class="col-md-8" style="padding-left:0px;">
+                    <div class="col-md-8">
                         <div class="input-group">
                             <input type="text" class="form-control" placeholder="Search for...">
                             <span class="input-group-btn"><button class="btn btn-default" type="button">Go!
@@ -224,30 +216,35 @@ foreach ($result as $value) {
             </div>
         </div>
     </div>
+
+
+    <div class="row">
+        <div class="col-md-8">
+            <ul class="nav nav-pills nav-stacked">
+                <li role="presentation" class="active"><a href="#">Home</a></li>
+                <li role="presentation"><a href="#">Profile</a></li>
+                <li role="presentation"><a href="#">Messages</a></li>
+            </ul>
+        </div>
+        <div class="col-md-">.col-md-4</div>
+    </div>
 </div>
 
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<script src="assets/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="assets/bootstrap.min.js"></script>
 
 <script>
     $(".bili-item-img").mouseover(function () {
 //        ???
-        $(this).siblings(".bili-item").css("display", "block");
+        $(this).siblings(".bili-item-mask").css("display", "block");
     });
-    $(".bili-item").mouseleave(function () {
+    $(".bili-item-mask").mouseleave(function () {
         $(this).css("display", "none");
     });
 </script>
-
-
-<ul class="nav nav-pills nav-stacked">
-    <li role="presentation" class="active"><a href="#">Home</a></li>
-    <li role="presentation"><a href="#">Profile</a></li>
-    <li role="presentation"><a href="#">Messages</a></li>
-</ul>
 
 
 </body>

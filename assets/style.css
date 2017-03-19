@@ -1,0 +1,54 @@
+h4 {
+    margin-top: 19px;
+}
+
+.bili-item {
+    margin-bottom: 10px;
+}
+
+.bili-item a {
+    width: 185px;
+}
+
+.bili-item-mask {
+    background-color: black;
+    opacity: 0.5;
+    text-align: center;
+    position: absolute;
+    bottom: 10px;
+    top: 0;
+    left: 15px;
+    right: 15px;
+    color: #FFF;
+    display: none;
+}
+
+.bili-item-mask p:nth-child(1) {
+    margin-top: 10px;
+}
+
+.bili-item-mask p:nth-child(2) {
+    margin-top: 30px;
+    text-align: left;
+    margin-left: 10px;
+}
+
+.bili-item-mask p:nth-child(3) {
+    margin-top: 5px;
+    text-align: left;
+    margin-left: 10px;
+}
+
+.top-background {
+    height: 170px;
+    background: transparent no-repeat center -10px;
+    background-image: url(http://i0.hdslb.com/bfs/archive/4f59bf959d51592016e07efe62969c411288826a.png);
+}
+
+.top-background > .container {
+    padding-top: 120px;
+}
+
+.top-background .col-md-8 {
+    padding-left: 0px;
+}
