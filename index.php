@@ -62,7 +62,7 @@ foreach ($result as $value) {
 
     <!-- Bootstrap -->
     <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-
+    <link href="images/icons/favicon.ico">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -250,16 +250,27 @@ foreach ($result as $value) {
             </div>
             <div class="row">
                 <div class=" col-md-3">
-                    <img src="images/videoshot/3/0.png">
-                    <a href="#">Naruto</a>
+                    <img class="bili-video-img" src="images/cover/naruto.png" style="width: 100%;">
 
-                    <div class="bili-progress">
-                        <div class="progress">
-                            <div class="progress-bar" role="progressbar">
-                                60%
+                    <!--                    <div class="bili-video-background" style="background-image: url(images/videoshot/3/1.png); height: 100%;-->
+                    <!--                    width:100%;">-->
+                    <!--                    </div>-->
+                    <div class="bili-video-background"
+                         style=" position: absolute; bottom: 20px; top: 0;left: 15px; right: 15px;display: none;">
+                        <img src="images/videoshot/3/0.png" style="width: 100%;">
+                    </div>
+
+                    <div class="bili-video-mask" style=" background-color:rgba(0,0,0,0.2); text-align: center;
+                    position: absolute; bottom: 20px; top: 0;left: 15px; right: 15px; color: #FFF; display: none;">
+                        <div class="bili-progress" style="margin: 5px;">
+                            <div class="progress" style="height: 2px;">
+                                <div class="progress-bar" role="progressbar">
+                                    <span class="sr-only"></span>
+                                </div>
                             </div>
                         </div>
                     </div>
+                    <a href="#">Naruto</a>
                 </div>
                 <div class=" col-md-3"></div>
                 <div class=" col-md-3"></div>
@@ -308,11 +319,23 @@ foreach ($result as $value) {
     });
 
 
-    $(".bili-progress").mousemove(function (e) {
+    $(".bili-video-mask").mousemove(function (e) {
 //     enter_position_left
 //        元素_position
-        var ratio = Math.round((e.pageX - $(this).offset().left ) / $(this).innerWidth() * 10000)/100;
+        var ratio = Math.round((e.pageX - $(this).offset().left ) / $(this).innerWidth() * 10000) / 100;
+        var background_index = parseInt(ratio / 10);
         $(this).find(".progress-bar").width(ratio + "%");
+        $(".bili-video-background>img").prop("src", "images/videoshot/3/" + background_index + ".png");
+
+//        alert(background_index);
+    });
+
+    $(".bili-video-img").mouseover(function () {
+        $(this).siblings(".bili-video-mask,.bili-video-background").css("display", "block");
+    });
+    $(".bili-video-mask").mouseleave(function () {
+        $(this).css("display", "none");
+        $(this).siblings(".bili-video-background").css("display", "none");
     });
 
 </script>
