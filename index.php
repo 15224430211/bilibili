@@ -150,9 +150,7 @@ foreach ($result as $value) {
         </div>
         <div class="col-md-1">
             <a href="#">
-                <h4><span class="glyphicon glyphicon-minus-sign"></span>黑屋
-                </h4>
-
+                <h4><span class="glyphicon glyphicon-minus-sign"></span>黑屋</h4>
             </a>
         </div>
         <div class="col-md-1">
@@ -176,23 +174,17 @@ foreach ($result as $value) {
                     <div class="item active">
                         <img src="images/preview/gintama.png" class="carousel-inner img-responsive img-rounded">
 
-                        <div class="carousel-caption">
-                            ...
-                        </div>
+                        <div class="carousel-caption"></div>
                     </div>
                     <div class="item">
                         <img src="images/preview/naruto.png" class="carousel-inner img-responsive img-rounded">
 
-                        <div class="carousel-caption">
-                            ...
-                        </div>
+                        <div class="carousel-caption"></div>
                     </div>
                     <div class="item">
                         <img src="images/preview/Yu-Gi-Oh!.png" class="carousel-inner img-responsive img-rounded">
 
-                        <div class="carousel-caption">
-                            ...
-                        </div>
+                        <div class="carousel-caption"></div>
                     </div>
 
                 </div>
@@ -217,16 +209,85 @@ foreach ($result as $value) {
         </div>
     </div>
 
-
+    <hr>
     <div class="row">
         <div class="col-md-8">
-            <ul class="nav nav-pills nav-stacked">
-                <li role="presentation" class="active"><a href="#">Home</a></li>
-                <li role="presentation"><a href="#">Profile</a></li>
-                <li role="presentation"><a href="#">Messages</a></li>
-            </ul>
+            <div class="row">
+                <div class="col-md-1">
+                    <img src="images/icons/MJ.png"/>
+                </div>
+                <div class="col-md-1" style="padding: 0px">
+                    <a href="#">
+                        <h4>动画</h4>
+                    </a>
+                </div>
+                <div class="col-md-4">
+                    <ul class="nav nav-tabs">
+                        <li role="presentation" class="active"><a href="#">有新动态</a></li>
+                        <li role="presentation"><a href="#">最新投稿</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <a href="#">
+                        <h5><span class="glyphicon glyphicon-fire"></span>&nbsp;[2017春]新番介绍</h5>
+                    </a>
+                </div>
+                <div class="col-md-2" style="padding: 0;">
+                    <h5>
+                        <button type="button" class="btn btn-default btn-block btn-xs">
+                            <span class="glyphicon glyphicon-refresh"></span>&nbsp;111新动态
+                        </button>
+                    </h5>
+                </div>
+                <div class="col-md-1" style="padding-right: 0;padding-left: 10px;">
+                    <h5>
+                        <a class="btn btn-default btn-block btn-xs" href="#" role="button">
+                            更多&nbsp;<span class="glyphicon glyphicon-chevron-right"></span> </a>
+                    </h5>
+                </div>
+
+
+            </div>
+            <div class="row">
+                <div class=" col-md-3">
+                    <img src="images/videoshot/3/0.png">
+                    <a href="#">Naruto</a>
+
+                    <div class="bili-progress">
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar">
+                                60%
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class=" col-md-3"></div>
+                <div class=" col-md-3"></div>
+                <div class=" col-md-3"></div>
+            </div>
         </div>
-        <div class="col-md-">.col-md-4</div>
+
+        <div class="col-md-4">
+            <div class="row">
+                <div class="col-md-3">
+                    <h3 style="margin-top: 10px">排行</h3>
+                </div>
+                <div class="col-md-3 col-md-offset-6">
+                    <div class="dropdown" style="margin-top: 5px;">
+                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1"
+                                data-toggle="dropdown">
+                            三日
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" style="min-width: 0;">
+                            <li><a href="#">一周</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
     </div>
 </div>
 
@@ -239,11 +300,21 @@ foreach ($result as $value) {
 <script>
     $(".bili-item-img").mouseover(function () {
 //        ???
+
         $(this).siblings(".bili-item-mask").css("display", "block");
     });
     $(".bili-item-mask").mouseleave(function () {
         $(this).css("display", "none");
     });
+
+
+    $(".bili-progress").mousemove(function (e) {
+//     enter_position_left
+//        元素_position
+        var ratio = Math.round((e.pageX - $(this).offset().left ) / $(this).innerWidth() * 10000)/100;
+        $(this).find(".progress-bar").width(ratio + "%");
+    });
+
 </script>
 
 
