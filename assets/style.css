@@ -52,3 +52,17 @@ h4 {
 .top-background .col-md-8 {
     padding-left: 0px;
 }
+
+.bili-video-title {
+    height: 40px;
+}
+
+.bili-video-title > a > div:nth-child(1) {
+    height: 20px;
+}
+
+.bili-video-title > a > div:nth-child(1):hover {
+    height: 40px;
+
+}
+
