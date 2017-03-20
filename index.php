@@ -252,9 +252,6 @@ foreach ($result as $value) {
                 <div class=" col-md-3">
                     <img class="bili-video-img" src="images/cover/naruto.png" style="width: 100%;">
 
-                    <!--                    <div class="bili-video-background" style="background-image: url(images/videoshot/3/1.png); height: 100%;-->
-                    <!--                    width:100%;">-->
-                    <!--                    </div>-->
                     <div class="bili-video-background"
                          style=" position: absolute; bottom: 20px; top: 0;left: 15px; right: 15px;display: none;">
                         <img src="images/videoshot/3/0.png" style="width: 100%;">
@@ -262,12 +259,16 @@ foreach ($result as $value) {
 
                     <div class="bili-video-mask" style=" background-color:rgba(0,0,0,0.2); text-align: center;
                     position: absolute; bottom: 20px; top: 0;left: 15px; right: 15px; color: #FFF; display: none;">
+
                         <div class="bili-progress" style="margin: 5px;">
                             <div class="progress" style="height: 2px;">
                                 <div class="progress-bar" role="progressbar">
                                     <span class="sr-only"></span>
                                 </div>
                             </div>
+                        </div>
+                        <div class="text-right" style="position: absolute;margin: 0 5px;right: 0;bottom: 0;">
+                            11:11
                         </div>
                     </div>
                     <a href="#">Naruto</a>
@@ -325,7 +326,7 @@ foreach ($result as $value) {
         var ratio = Math.round((e.pageX - $(this).offset().left ) / $(this).innerWidth() * 10000) / 100;
         var background_index = parseInt(ratio / 10);
         $(this).find(".progress-bar").width(ratio + "%");
-        $(".bili-video-background>img").prop("src", "images/videoshot/3/" + background_index + ".png");
+        $(this).siblings(".bili-video-background").find("img").prop("src", "images/videoshot/3/" + background_index + ".png");
 
 //        alert(background_index);
     });
