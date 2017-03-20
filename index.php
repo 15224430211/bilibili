@@ -49,6 +49,68 @@ foreach ($result as $value) {
                       </div>
                     </div>';
 }
+$bili_video_html = "";
+$sql = "SELECT
+animation_detail.id,
+animation_detail.`name`,
+animation_detail.click_count,
+animation_detail.comment_count,
+animation_detail.image_name,
+animation_detail.length
+FROM
+animation_detail
+LIMIT 8";
+
+$result = mysqli_fetch_all(mysqli_query($a, $sql), MYSQLI_ASSOC);
+foreach ($result as $value) {
+    $bili_video_html .=
+        "<div class='col-md-3' data-video-id='{$value["id"]}'>
+                    <img class='bili-video-img' src='images/cover/" . $value['image_name'] . ".png' style='width: 100%;'>
+
+                    <div class='bili-video-background'
+                     style=' position: absolute; bottom: 20px; top: 0;left: 15px; right: 15px;display: none;'>
+                        <img src='#' style='width: 100%;'>
+                    </div>
+
+                    <div class='bili-video-mask' style=' background-color:rgba(0,0,0,0.2); text-align: center;
+                    position: absolute; bottom: 60px; top: 0;left: 15px; right: 15px; color: #FFF; display: none;'>
+
+                        <div class='bili-video-progress' style='margin: 5px;'>
+                            <div class='progress' style='height: 2px;'>
+                                <div class='progress-bar' role='progressbar'>
+                                    <span class='sr-only'></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class='text-right' style='position: absolute;margin: 0 5px;right: 0;bottom: 0;'>
+    " . $value['length'] . "
+</div>
+                    </div>
+                    <div class='bili-video-title' style=' overflow: hidden;margin-bottom: 20px;'>
+                        <a href='#'>
+                            <div style='text-align: left;word-break: break-all;word-wrap: break-word;
+                    overflow: hidden;background-color:#fff; transition: all .2s linear;'>
+    " . $value['name'] . "
+</div>
+                            <div class='row'>
+                                <div class='col-md-6'>
+                                    <div style='color: #aaa;'>
+                                        <span class='glyphicon glyphicon-expand'></span>&nbsp;" . $value['click_count'] . "
+</div>
+                                </div>
+                                <div class='col-md-6'>
+                                    <div style='color: #aaa;'>
+                                        <span class='glyphicon glyphicon-comment'></span>&nbsp;" . $value['comment_count'] . "
+</div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+
+                </div>";
+
+}
 //echo $title_html;
 ?>
 <!DOCTYPE html>
@@ -245,231 +307,9 @@ foreach ($result as $value) {
 
             </div>
             <div class="row">
-                <div class=" col-md-3">
-                    <img class="bili-video-img" src="images/cover/naruto.png" style="width: 100%;">
-
-                    <div class="bili-video-background"
-                         style=" position: absolute; bottom: 20px; top: 0;left: 15px; right: 15px;display: none;">
-                        <img src="images/videoshot/3/0.png" style="width: 100%;">
-                    </div>
-
-                    <div class="bili-video-mask" style=" background-color:rgba(0,0,0,0.2); text-align: center;
-                    position: absolute; bottom: 40px; top: 0;left: 15px; right: 15px; color: #FFF; display: none;">
-
-                        <div class="bili-video-progress" style="margin: 5px;">
-                            <div class="progress" style="height: 2px;">
-                                <div class="progress-bar" role="progressbar">
-                                    <span class="sr-only"></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="text-right" style="position: absolute;margin: 0 5px;right: 0;bottom: 0;">
-                            11:11
-                        </div>
-                    </div>
-                    <div class="bili-video-title" style=" overflow: hidden;">
-                        <a href="#">
-                            <div style="text-align: left;word-break: break-all;word-wrap: break-word;
-                    overflow: hidden;background-color:#fff; transition: all .2s linear;">
-                                NarutoNarutoNarutoNarutoNaruto
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div style="color: #aaa;">
-                                        <span class="glyphicon glyphicon-asterisk"></span>&nbsp;11111
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div style="color: #aaa;">
-                                        <span class="glyphicon glyphicon-asterisk"></span>&nbsp;22222
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-
-
-                </div>
-                <div class=" col-md-3">
-                    <img class="bili-video-img" src="images/cover/naruto.png" style="width: 100%;">
-
-                    <div class="bili-video-background"
-                         style=" position: absolute; bottom: 20px; top: 0;left: 15px; right: 15px;display: none;">
-                        <img src="images/videoshot/3/0.png" style="width: 100%;">
-                    </div>
-
-                    <div class="bili-video-mask" style=" background-color:rgba(0,0,0,0.2); text-align: center;
-                    position: absolute; bottom: 40px; top: 0;left: 15px; right: 15px; color: #FFF; display: none;">
-
-                        <div class="bili-video-progress" style="margin: 5px;">
-                            <div class="progress" style="height: 2px;">
-                                <div class="progress-bar" role="progressbar">
-                                    <span class="sr-only"></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="text-right" style="position: absolute;margin: 0 5px;right: 0;bottom: 0;">
-                            11:11
-                        </div>
-                    </div>
-                    <div class="bili-video-title" style=" overflow: hidden;">
-                        <a href="#">
-                            <div style="text-align: left;word-break: break-all;word-wrap: break-word;
-                    overflow: hidden;background-color:#fff; transition: all .2s linear;">
-                                NarutoNarutoNarutoNarutoNaruto
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div style="color: #aaa;">
-                                        <span class="glyphicon glyphicon-asterisk"></span>&nbsp;11111
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div style="color: #aaa;">
-                                        <span class="glyphicon glyphicon-asterisk"></span>&nbsp;22222
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-
-
-                </div>
-                <div class=" col-md-3">
-                    <img class="bili-video-img" src="images/cover/naruto.png" style="width: 100%;">
-
-                    <div class="bili-video-background"
-                         style=" position: absolute; bottom: 20px; top: 0;left: 15px; right: 15px;display: none;">
-                        <img src="images/videoshot/3/0.png" style="width: 100%;">
-                    </div>
-
-                    <div class="bili-video-mask" style=" background-color:rgba(0,0,0,0.2); text-align: center;
-                    position: absolute; bottom: 40px; top: 0;left: 15px; right: 15px; color: #FFF; display: none;">
-
-                        <div class="bili-video-progress" style="margin: 5px;">
-                            <div class="progress" style="height: 2px;">
-                                <div class="progress-bar" role="progressbar">
-                                    <span class="sr-only"></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="text-right" style="position: absolute;margin: 0 5px;right: 0;bottom: 0;">
-                            11:11
-                        </div>
-                    </div>
-                    <div class="bili-video-title" style=" overflow: hidden;">
-                        <a href="#">
-                            <div style="text-align: left;word-break: break-all;word-wrap: break-word;
-                    overflow: hidden;background-color:#fff; transition: all .2s linear;">
-                                NarutoNarutoNarutoNarutoNaruto
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div style="color: #aaa;">
-                                        <span class="glyphicon glyphicon-asterisk"></span>&nbsp;11111
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div style="color: #aaa;">
-                                        <span class="glyphicon glyphicon-asterisk"></span>&nbsp;22222
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-
-
-                </div>
-                <div class=" col-md-3">
-                    <img class="bili-video-img" src="images/cover/naruto.png" style="width: 100%;">
-
-                    <div class="bili-video-background"
-                         style=" position: absolute; bottom: 20px; top: 0;left: 15px; right: 15px;display: none;">
-                        <img src="images/videoshot/3/0.png" style="width: 100%;">
-                    </div>
-
-                    <div class="bili-video-mask" style=" background-color:rgba(0,0,0,0.2); text-align: center;
-                    position: absolute; bottom: 40px; top: 0;left: 15px; right: 15px; color: #FFF; display: none;">
-
-                        <div class="bili-video-progress" style="margin: 5px;">
-                            <div class="progress" style="height: 2px;">
-                                <div class="progress-bar" role="progressbar">
-                                    <span class="sr-only"></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="text-right" style="position: absolute;margin: 0 5px;right: 0;bottom: 0;">
-                            11:11
-                        </div>
-                    </div>
-                    <div class="bili-video-title" style=" overflow: hidden;">
-                        <a href="#">
-                            <div style="text-align: left;word-break: break-all;word-wrap: break-word;
-                    overflow: hidden;background-color:#fff; transition: all .2s linear;">
-                                NarutoNarutoNarutoNarutoNaruto
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div style="color: #aaa;">
-                                        <span class="glyphicon glyphicon-asterisk"></span>&nbsp;11111
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div style="color: #aaa;">
-                                        <span class="glyphicon glyphicon-asterisk"></span>&nbsp;22222
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-
-
-                </div>
-                <div class=" col-md-3">
-                    <img class="bili-video-img" src="images/cover/naruto.png" style="width: 100%;">
-
-                    <div class="bili-video-background"
-                         style=" position: absolute; bottom: 20px; top: 0;left: 15px; right: 15px;display: none;">
-                        <img src="images/videoshot/3/0.png" style="width: 100%;">
-                    </div>
-
-                    <div class="bili-video-mask" style=" background-color:rgba(0,0,0,0.2); text-align: center;
-                    position: absolute; bottom: 40px; top: 0;left: 15px; right: 15px; color: #FFF; display: none;">
-
-                        <div class="bili-video-progress" style="margin: 5px;">
-                            <div class="progress" style="height: 2px;">
-                                <div class="progress-bar" role="progressbar">
-                                    <span class="sr-only"></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="text-right" style="position: absolute;margin: 0 5px;right: 0;bottom: 0;">
-                            11:11
-                        </div>
-                    </div>
-                    <div class="bili-video-title" style=" overflow: hidden;">
-                        <a href="#">
-                            <div style="text-align: left;word-break: break-all;word-wrap: break-word;
-                    overflow: hidden;background-color:#fff; transition: all .2s linear;">
-                                NarutoNarutoNarutoNarutoNaruto
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div style="color: #aaa;">
-                                        <span class="glyphicon glyphicon-asterisk"></span>&nbsp;11111
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div style="color: #aaa;">
-                                        <span class="glyphicon glyphicon-asterisk"></span>&nbsp;22222
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-
-
-                </div>
+                <?php
+                echo $bili_video_html;
+                ?>
             </div>
         </div>
 
@@ -519,8 +359,10 @@ foreach ($result as $value) {
 //        元素_position
         var ratio = Math.round((e.pageX - $(this).offset().left ) / $(this).innerWidth() * 10000) / 100;
         var background_index = parseInt(ratio / 10);
+        var video_id = $(this).parents().data("video-id");
+//        alert(video_id);
         $(this).find(".progress-bar").width(ratio + "%");
-        $(this).siblings(".bili-video-background").find("img").prop("src", "images/videoshot/3/" + background_index + ".png");
+        $(this).siblings(".bili-video-background").find("img").prop("src", "images/videoshot/" + video_id + "/" + background_index + ".png");
 
 //        alert(background_index);
     });
