@@ -316,10 +316,137 @@ foreach ($result as $value) {
                         </ul>
                     </div>
                 </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="media" style="margin-bottom: 15px;">
+                        <div class="media-left">
+                            <span class="label label-primary" style="display:inline-block;">1</span>
+                        </div>
+                        <div class="media-left">
+                            <a href="#">
+                                <img class="media-object" src="images/cover/Ace.png" style="height: 50px;">
+                            </a>
+                        </div>
+                        <div class="media-body">
+                            <p class="media-heading">暗杀教室</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="media" style="margin-bottom: 15px;">
+                        <div class="media-left">
+                            <span class="label label-primary" style="display:inline-block;">1</span>
+                        </div>
+                        <div class="media-body">
+                            <a href="#">
+                                <div style="height: 20px;overflow: hidden;">
+                                    暗杀教室暗杀教室暗杀教室暗杀教室暗杀教室暗杀教室暗杀教室暗杀教
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="media" style="margin-bottom: 15px;">
+                        <div class="media-left">
+                            <span class="label label-primary" style="display:inline-block;">1</span>
+                        </div>
+                        <div class="media-body">
+                            <div style="height: 20px;overflow: hidden;">
+                                暗杀教室暗杀教室暗杀教室暗杀教室暗杀教室暗杀教室暗杀教室暗杀教
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="media" style="margin-bottom: 15px;">
+                        <div class="media-left">
+                            <span class="label label-primary" style="display:inline-block;">1</span>
+                        </div>
+                        <div class="media-body">
+                            <div style="height: 20px;overflow: hidden;">
+                                暗杀教室暗杀教室暗杀教室暗杀教室暗杀教室暗杀教室暗杀教室暗杀教
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="media" style="margin-bottom: 15px;">
+                        <div class="media-left">
+                            <span class="label label-primary" style="display:inline-block;">1</span>
+                        </div>
+                        <div class="media-body">
+                            <div style="height: 20px;overflow: hidden;">
+                                暗杀教室暗杀教室暗杀教室暗杀教室暗杀教室暗杀教室暗杀教室暗杀教
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="media" style="margin-bottom: 15px;">
+                        <div class="media-left">
+                            <span class="label label-primary" style="display:inline-block;">1</span>
+                        </div>
+                        <div class="media-body">
+                            <div style="height: 20px;overflow: hidden;">
+                                暗杀教室暗杀教室暗杀教室暗杀教室暗杀教室暗杀教室暗杀教室暗杀教
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="media" style="margin-bottom: 15px;">
+                        <div class="media-left">
+                            <span class="label label-primary" style="display:inline-block;">1</span>
+                        </div>
+                        <div class="media-body">
+                            <div style="height: 20px;overflow: hidden;">
+                                暗杀教室暗杀教室暗杀教室暗杀教室暗杀教室暗杀教室暗杀教室暗杀教
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
 
+                <div class="col-md-offset-2 col-md-8">
+                    <a class="btn btn-xs btn-block btn-default" href="#" role="button">查看更多</a>
+                </div>
             </div>
         </div>
+
+    </div>
+    <hr style="margin-top: 10px;">
+    <div class="col-md-4">
+
+        <div class="alert alert-warning" role="alert">
+            <div class="row">
+                <div class="col-md-12">暗杀教室</div>
+            </div>
+            <hr style="margin-top: 10px;">
+            <div class="row">
+                <div class="col-md-5">
+                    <img src="images/cover/Ace.png" style="width: 100%;">
+                </div>
+                <div class="col-md-7">
+                    <p style="height: 63px;overflow: hidden;">
+                        震惊！龙女仆里配音过的角色最多的声优，小野大辅只排第二，第一竟然是TA！
+                        开玩笑开玩笑。平时经常会搜罗一下自己喜欢的角色的cv的履历，
+                        然后不停的惊讶于一个声优竟然可以配音这么多风格迥异的角色，甚至声音听起来完全不一样！
+                    </p>
+                </div>
+            </div>
+            <hr style="margin-bottom: 10px;">
+            <div class="row">
+                <div class="col-md-3">暗杀教室</div>
+                <div class="col-md-3">暗杀教室</div>
+                <div class="col-md-3">暗杀教室</div>
+                <div class="col-md-3">暗杀教室</div>
+            </div>
+        </div>
+
+
     </div>
 </div>
 
