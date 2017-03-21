@@ -65,38 +65,26 @@ $result = mysqli_fetch_all(mysqli_query($a, $sql), MYSQLI_ASSOC);
 foreach ($result as $value) {
     $bili_video_html .=
         "<div class='col-md-3' data-video-id='{$value["id"]}'>
-                    <img class='bili-video-img' src='images/cover/" . $value['image_name'] . ".png' style='width: 100%;'>
-
-                    <div class='bili-video-background'
-                     style=' position: absolute; bottom: 20px; top: 0;left: 15px; right: 15px;display: none;'>
+                    <img class='bili-video-img' src='images/cover/" . $value['image_name'] . ".png'>
+                    <div class='bili-video-background'>
                         <img src='#' style='width: 100%;'>
                     </div>
-
-                    <div class='bili-video-mask' style=' background-color:rgba(0,0,0,0.2); text-align: center;
-                    position: absolute; bottom: 60px; top: 0;left: 15px; right: 15px; color: #FFF; display: none;'>
-
-                        <div class='bili-video-progress' style='margin: 5px;'>
-                            <div class='progress' style='height: 2px;'>
+                    <div class='bili-video-mask'>
+                     <div class='bili-video-progress'>
+                     <div class='progress'>
                                 <div class='progress-bar' role='progressbar'>
                                     <span class='sr-only'></span>
                                 </div>
                             </div>
-                        </div>
-                        <div class='text-right' style='position: absolute;margin: 0 5px;right: 0;bottom: 0;'>
-    " . $value['length'] . "
-</div>
+                     </div>
+                     <div class='text-right'>  " . $value['length'] . "</div>
                     </div>
-                    <div class='bili-video-title' style=' overflow: hidden;margin-bottom: 20px;'>
-                        <a href='#'>
-                            <div style='text-align: left;word-break: break-all;word-wrap: break-word;
-                    overflow: hidden;background-color:#fff; transition: all .2s linear;'>
-    " . $value['name'] . "
-</div>
+                    <div class='bili-video-title'><a href='#'>
+                    <div> " . $value['name'] . "</div>
                             <div class='row'>
                                 <div class='col-md-6'>
                                     <div style='color: #aaa;'>
-                                        <span class='glyphicon glyphicon-expand'></span>&nbsp;" . $value['click_count'] . "
-</div>
+                                    <span class='glyphicon glyphicon-expand'></span>&nbsp;" . $value['click_count'] . "</div>
                                 </div>
                                 <div class='col-md-6'>
                                     <div style='color: #aaa;'>
@@ -106,8 +94,6 @@ foreach ($result as $value) {
                             </div>
                         </a>
                     </div>
-
-
                 </div>";
 
 }
