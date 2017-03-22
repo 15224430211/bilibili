@@ -334,7 +334,7 @@ foreach ($result as $value) {
                     </div>
                 </div>
                 <div class="col-md-12">
-                    <div class="media" style="margin-bottom: 15px;">
+                    <div class="media bili-ranking-media" style="margin-bottom: 15px;">
                         <div class="media-left">
                             <span class="label label-primary" style="display:inline-block;">1</span>
                         </div>
@@ -348,62 +348,72 @@ foreach ($result as $value) {
                     </div>
                 </div>
                 <div class="col-md-12">
-                    <div class="media" style="margin-bottom: 15px;">
+                    <div class="media bili-ranking-media" style="margin-bottom: 15px;">
                         <div class="media-left">
                             <span class="label label-primary" style="display:inline-block;">1</span>
                         </div>
                         <div class="media-body">
-                            <div style="height: 20px;overflow: hidden;">
-                                暗杀教室暗杀教室暗杀教室暗杀教室暗杀教室暗杀教室暗杀教室暗杀教
-                            </div>
+                            <a href="#">
+                                <div style="height: 20px;overflow: hidden;">
+                                    暗杀教室暗杀教室暗杀教室暗杀教室暗杀教室暗杀教室暗杀教室暗杀教
+                                </div>
+                            </a>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-12">
-                    <div class="media" style="margin-bottom: 15px;">
+                    <div class="media bili-ranking-media" style="margin-bottom: 15px;">
                         <div class="media-left">
                             <span class="label label-primary" style="display:inline-block;">1</span>
                         </div>
                         <div class="media-body">
-                            <div style="height: 20px;overflow: hidden;">
-                                暗杀教室暗杀教室暗杀教室暗杀教室暗杀教室暗杀教室暗杀教室暗杀教
-                            </div>
+                            <a href="#">
+                                <div style="height: 20px;overflow: hidden;">
+                                    暗杀教室暗杀教室暗杀教室暗杀教室暗杀教室暗杀教室暗杀教室暗杀教
+                                </div>
+                            </a>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-12">
-                    <div class="media" style="margin-bottom: 15px;">
+                    <div class="media bili-ranking-media" style="margin-bottom: 15px;">
                         <div class="media-left">
                             <span class="label label-primary" style="display:inline-block;">1</span>
                         </div>
                         <div class="media-body">
-                            <div style="height: 20px;overflow: hidden;">
-                                暗杀教室暗杀教室暗杀教室暗杀教室暗杀教室暗杀教室暗杀教室暗杀教
-                            </div>
+                            <a href="#">
+                                <div style="height: 20px;overflow: hidden;">
+                                    暗杀教室暗杀教室暗杀教室暗杀教室暗杀教室暗杀教室暗杀教室暗杀教
+                                </div>
+                            </a>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-12">
-                    <div class="media" style="margin-bottom: 15px;">
+                    <div class="media bili-ranking-media" style="margin-bottom: 15px;">
                         <div class="media-left">
                             <span class="label label-primary" style="display:inline-block;">1</span>
                         </div>
                         <div class="media-body">
-                            <div style="height: 20px;overflow: hidden;">
-                                暗杀教室暗杀教室暗杀教室暗杀教室暗杀教室暗杀教室暗杀教室暗杀教
-                            </div>
+                            <a href="#">
+                                <div style="height: 20px;overflow: hidden;">
+                                    暗杀教室暗杀教室暗杀教室暗杀教室暗杀教室暗杀教室暗杀教室暗杀教
+                                </div>
+                            </a>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-12">
-                    <div class="media" style="margin-bottom: 15px;">
+                    <div class="media bili-ranking-media" style="margin-bottom: 15px;">
                         <div class="media-left">
                             <span class="label label-primary" style="display:inline-block;">1</span>
                         </div>
                         <div class="media-body">
-                            <div style="height: 20px;overflow: hidden;">
-                                暗杀教室暗杀教室暗杀教室暗杀教室暗杀教室暗杀教室暗杀教室暗杀教
-                            </div>
+                            <a href="#">
+                                <div style="height: 20px;overflow: hidden;">
+                                    暗杀教室暗杀教室暗杀教室暗杀教室暗杀教室暗杀教室暗杀教室暗杀教
+                                </div>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -420,10 +430,10 @@ foreach ($result as $value) {
 
 
 </div>
-<div class="container bili-ranking-panel" style="display: none;position:absolute;">
+<div class="container bili-ranking-panel" style="display: none;position:absolute;transition: all .2s linear;">
     <div class="row">
         <div class="col-md-4">
-            <div class="alert alert-warning" role="alert">
+            <div class="alert alert-warning" role="alert" style="margin-bottom: 5px;box-shadow:2px 2px rgba(0,0,0,0.16);">
                 <div class="row">
                     <div class="col-md-12">暗杀教室</div>
                 </div>
@@ -495,11 +505,14 @@ foreach ($result as $value) {
         $(".bili-ranking-panel").css("display", "block");
         $(".bili-ranking-panel").offset(
             {
-                top: top, left: left
+                top: top - $(".bili-ranking-panel").height(), left: left
             }
         );
 
-    })
+    });
+    $(".bili-ranking-panel").mouseleave(function () {
+        $(this).css("display", "none");
+    });
 </script>
 
 
