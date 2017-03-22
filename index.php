@@ -107,59 +107,46 @@ animation_detail.`name`,
 animation_detail.image_name
 FROM
 animation_detail
-LIMIT 1";
+LIMIT 7";
 
 $result = mysqli_fetch_all(mysqli_query($a, $sql), MYSQLI_ASSOC);
 foreach ($result as $key => $value) {
-    $bili_ranking_html .= '
-<div class="col-md-12">
-                    <div class="media bili-ranking-media" style="margin-bottom: 15px;">
-                        <div class="media-left">
-                            <span class="label label-primary" style="display:inline-block;">' . ($key + 1) . '</span>
+    if ($key == 0) {
+        $bili_ranking_html .= "
+<div class='col-md-12' data-video-id='{$value["id"]}'>
+                    <div class='media bili-ranking-media' style='margin-bottom: 15px;'>
+                        <div class='media-left'>
+                            <span class='label label-primary' style='display:inline-block;'>" . ($key + 1) . "</span>
                         </div>
-                        <div class="media-left">
-                            <a href="#">
-                                <img class="media-object" src="images/cover/' . $value['image_name'] . '.png" style="height: 50px;">
+                        <div class='media-left'>
+                            <a href='#'>
+                                <img class='media-object' src='images/cover/" . $value['image_name'] . ".png' style='height: 50px;'>
                             </a>
                         </div>
-                        <div class="media-body media-heading">
-                            <a href="#">' . $value['name'] . '</a>
+                        <div class='media-body media-heading'>
+                            <a href='#'>" . $value['name'] . "</a>
                         </div>
                     </div>
-                    </div>';
-}
-$bili_ranking_left_html = "";
-
-
-
-$sql = "SELECT
-animation_detail.id,
-animation_detail.`name`,
-animation_detail.image_name
-FROM
-animation_detail
-LIMIT 1,6";
-$result = mysqli_fetch_all(mysqli_query($a, $sql), MYSQLI_ASSOC);
-foreach ($result as $key => $value) {
-    $bili_ranking_left_html .= '
-    <div class="col-md-12">
-                    <div class="media bili-ranking-media" style="margin-bottom: 15px;">
-                        <div class="media-left">
-                            <span class="label label-primary" style="display:inline-block;">' . ($key + 2) . '</span>
+                    </div>";
+    } else {
+        $bili_ranking_html .= "
+    <div class='col-md-12' data-video-id='{$value["id"]}'>
+                    <div class='media bili-ranking-media' style='margin-bottom: 15px;'>
+                        <div class='media-left'>
+                            <span class='label label-primary' style='display:inline-block;'>" . ($key + 1) . "</span>
                         </div>
-                        <div class="media-body">
-                            <a href="#">
-                                <div style="height: 20px;overflow: hidden;">
-                                ' . $value['name'] . '</div>
+                        <div class='media-body'>
+                            <a href='#'>
+                                <div style='height: 20px;overflow: hidden;'>
+                                " . $value['name'] . "</div>
                             </a>
                         </div>
                     </div>
-                </div>';
+                </div>";
+    }
+
+
 }
-
-
-
-
 
 //echo $title_html;
 ?>
@@ -384,7 +371,6 @@ foreach ($result as $key => $value) {
             <div class="row">
                 <?php
                 echo $bili_ranking_html;
-                echo $bili_ranking_left_html;
                 ?>
                 <div class="col-md-offset-2 col-md-8"><a class="btn btn-xs btn-block btn-default" href="#"
                                                          role="button">查看更多</a></div>
@@ -398,21 +384,23 @@ foreach ($result as $key => $value) {
 
 
 </div>
+
+
 <div class="container bili-ranking-panel" style="display: none;position:absolute;transition: all .2s linear;">
     <div class="row">
         <div class="col-md-4">
             <div class="alert alert-warning" role="alert"
                  style="margin-bottom: 5px;box-shadow:2px 2px rgba(0,0,0,0.16);">
                 <div class="row">
-                    <div class="col-md-12">暗杀教室</div>
+                    <div class="col-md-12 bili-ranking-panel-name"><b>暗杀教室</b></div>
                 </div>
                 <hr style="margin-top: 10px;">
                 <div class="row">
                     <div class="col-md-5">
-                        <img src="images/cover/Ace.png" style="width: 100%;">
+                        <img class="bili-ranking-panel-img" src="images/cover/Ace.png" style="width: 100%;">
                     </div>
                     <div class="col-md-7">
-                        <p style="height: 63px;overflow: hidden;">
+                        <p class="bili-ranking-panel-detail" style="height: 63px;overflow: hidden;">
                             震惊！龙女仆里配音过的角色最多的声优，小野大辅只排第二，第一竟然是TA！
                             开玩笑开玩笑。平时经常会搜罗一下自己喜欢的角色的cv的履历，
                             然后不停的惊讶于一个声优竟然可以配音这么多风格迥异的角色，甚至声音听起来完全不一样！
@@ -421,10 +409,18 @@ foreach ($result as $key => $value) {
                 </div>
                 <hr style="margin-bottom: 10px;">
                 <div class="row">
-                    <div class="col-md-3"><span class="glyphicon glyphicon-expand"></span>&nbsp;1111</div>
-                    <div class="col-md-3"><span class="glyphicon glyphicon-comment"></span>&nbsp;1111</div>
-                    <div class="col-md-3"><span class="glyphicon glyphicon-heart-empty"></span>&nbsp;1111</div>
-                    <div class="col-md-3"><span class="glyphicon glyphicon-star"></span>&nbsp;2222</div>
+                    <div class="col-md-3">
+                        <span class="glyphicon glyphicon-expand"></span>&nbsp;<b class="bili-ranking-panel-click-count">1111</b>
+                    </div>
+                    <div class="col-md-3">
+                        <span class="glyphicon glyphicon-comment"></span>&nbsp;<b class="bili-ranking-panel-comment-count">1111</b>
+                    </div>
+                    <div class="col-md-3">
+                        <span class="glyphicon glyphicon-heart-empty"></span>&nbsp;<b class="bili-ranking-panel-fav-count">1111</b>
+                    </div>
+                    <div class="col-md-3">
+                        <span class="glyphicon glyphicon-usd"></span>&nbsp;<b class="bili-ranking-panel-coin-count">2222</b>
+                    </div>
                 </div>
             </div>
         </div>
@@ -437,8 +433,10 @@ foreach ($result as $key => $value) {
 <script src="assets/bootstrap.min.js"></script>
 
 <script>
+    var video_list;
+
+
     $(".bili-item-img").mouseover(function () {
-//        ???
 
         $(this).siblings(".bili-item-mask").css("display", "block");
     });
@@ -468,7 +466,12 @@ foreach ($result as $key => $value) {
         $(this).siblings(".bili-video-background").css("display", "none");
     });
 
+
     $(".bili-ranking-media").mouseover(function () {
+
+        var video_id = $(this).parents().data("video-id");
+        bili_ranking_panel(video_id);
+
         var left = $(this).parents().offset().left;
         var top = $(this).offset().top;
         $(".bili-ranking-panel").css("display", "block");
@@ -479,9 +482,26 @@ foreach ($result as $key => $value) {
         );
 
     });
+
     $(".bili-ranking-panel").mouseleave(function () {
         $(this).css("display", "none");
     });
+
+
+    $.post("video.php", function (data) {
+        video_list = $.parseJSON(data);
+    });
+
+
+    function bili_ranking_panel(video_id) {
+        $(".bili-ranking-panel-name").text(video_list[video_id]['name']);
+        $(".bili-ranking-panel-img").prop("src", "images/cover/" + video_list[video_id]['image_name'] + ".png");
+        $(".bili-ranking-panel-detail").text(video_list[video_id]['detail']);
+        $(".bili-ranking-panel-click-count").text(video_list[video_id]['click_count']);
+        $(".bili-ranking-panel-comment-count").text(video_list[video_id]['comment_count']);
+        $(".bili-ranking-panel-fav-count").text(video_list[video_id]['fav_count']);
+        $(".bili-ranking-panel-coin-count").text(video_list[video_id]['coin_count']);
+    }
 </script>
 
 
