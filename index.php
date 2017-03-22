@@ -129,9 +129,6 @@ foreach ($result as $key => $value) {
                     </div>';
 }
 $bili_ranking_left_html = "";
-
-
-
 $sql = "SELECT
 animation_detail.id,
 animation_detail.`name`,
@@ -158,8 +155,51 @@ foreach ($result as $key => $value) {
 }
 
 
+$bili_ranking_panel_html = "";
+$sql = "
+SELECT
+animation_detail.`name`,
+animation_detail.image_name,
+animation_detail.click_count,
+animation_detail.comment_count,
+animation_detail.fav_count,
+animation_detail.coin_count
+FROM
+animation_detail
+LIMIT 0,7";
+$result = mysqli_fetch_all(mysqli_query($a, $sql), MYSQLI_ASSOC);
+foreach ($result as $value) {
+    $bili_ranking_panel_html .= '
+    <div class="col-md-4" style="display: none;">
+            <div class="alert alert-warning" role="alert"
+                 style="margin-bottom: 5px;box-shadow:2px 2px rgba(0,0,0,0.16);">
+                <div class="row">
+                    <div class="col-md-12">' . $value['name'] . '</div>
+                </div>
+                <hr style="margin-top: 10px;">
+                <div class="row">
+                    <div class="col-md-5">
+                        <img src="images/cover/' . $value['image_name'] . '.png" style="width: 100%;">
+                    </div>
+                    <div class="col-md-7">
+                        <p style="height: 63px;overflow:hidden;">
+                            震惊！龙女仆里配音过的角色最多的声优，小野大辅只排第二，第一竟然是TA！
+                            开玩笑开玩笑。平时经常会搜罗一下自己喜欢的角色的cv的履历，
+                            然后不停的惊讶于一个声优竟然可以配音这么多风格迥异的角色，甚至声音听起来完全不一样！
+                        </p>
+                    </div>
+                </div>
+                <hr style="margin-bottom: 10px;">
+                <div class="row">
+                    <div class="col-md-3"><span class="glyphicon glyphicon-expand"></span>&nbsp;' . $value['click_count'] . '</div>
+                    <div class="col-md-3"><span class="glyphicon glyphicon-comment"></span>&nbsp;' . $value['comment_count'] . '</div>
+                    <div class="col-md-3"><span class="glyphicon glyphicon-heart-empty"></span>&nbsp;' . $value['fav_count'] . '</div>
+                    <div class="col-md-3"><span class="glyphicon glyphicon-star"></span>&nbsp;' . $value['coin_count'] . '</div>
+                </div>
+            </div>
+        </div>';
 
-
+}
 
 //echo $title_html;
 ?>
@@ -398,36 +438,11 @@ foreach ($result as $key => $value) {
 
 
 </div>
-<div class="container bili-ranking-panel" style="display: none;position:absolute;transition: all .2s linear;">
+<div class="container bili-ranking-panel" style="position:absolute;transition: all .2s linear;">
     <div class="row">
-        <div class="col-md-4">
-            <div class="alert alert-warning" role="alert"
-                 style="margin-bottom: 5px;box-shadow:2px 2px rgba(0,0,0,0.16);">
-                <div class="row">
-                    <div class="col-md-12">暗杀教室</div>
-                </div>
-                <hr style="margin-top: 10px;">
-                <div class="row">
-                    <div class="col-md-5">
-                        <img src="images/cover/Ace.png" style="width: 100%;">
-                    </div>
-                    <div class="col-md-7">
-                        <p style="height: 63px;overflow: hidden;">
-                            震惊！龙女仆里配音过的角色最多的声优，小野大辅只排第二，第一竟然是TA！
-                            开玩笑开玩笑。平时经常会搜罗一下自己喜欢的角色的cv的履历，
-                            然后不停的惊讶于一个声优竟然可以配音这么多风格迥异的角色，甚至声音听起来完全不一样！
-                        </p>
-                    </div>
-                </div>
-                <hr style="margin-bottom: 10px;">
-                <div class="row">
-                    <div class="col-md-3"><span class="glyphicon glyphicon-expand"></span>&nbsp;1111</div>
-                    <div class="col-md-3"><span class="glyphicon glyphicon-comment"></span>&nbsp;1111</div>
-                    <div class="col-md-3"><span class="glyphicon glyphicon-heart-empty"></span>&nbsp;1111</div>
-                    <div class="col-md-3"><span class="glyphicon glyphicon-star"></span>&nbsp;2222</div>
-                </div>
-            </div>
-        </div>
+        <?php
+        echo $bili_ranking_panel_html;
+        ?>
     </div>
 </div>
 
@@ -471,7 +486,9 @@ foreach ($result as $key => $value) {
     $(".bili-ranking-media").mouseover(function () {
         var left = $(this).parents().offset().left;
         var top = $(this).offset().top;
-        $(".bili-ranking-panel").css("display", "block");
+        var index = $(this).parents().index();
+        $(".bili-ranking-panel>.row>div").css("display", "none");
+        $(".bili-ranking-panel>.row>div").eq(index).css("display", "block");
         $(".bili-ranking-panel").offset(
             {
                 top: top - $(".bili-ranking-panel").height(), left: left
@@ -480,7 +497,7 @@ foreach ($result as $key => $value) {
 
     });
     $(".bili-ranking-panel").mouseleave(function () {
-        $(this).css("display", "none");
+        $(".bili-ranking-panel>.row>div").css("display", "none");
     });
 </script>
 
