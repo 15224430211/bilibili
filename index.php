@@ -166,7 +166,6 @@ foreach ($result as $value) {
         </div><!-- /.col-lg-6 -->
     </div>
 </div>
-
 <div class="container">
     <div class="row">
         <div class="col-md-8">
@@ -320,7 +319,7 @@ foreach ($result as $value) {
 
             <div class="row">
                 <div class="col-md-12">
-                    <div class="media" style="margin-bottom: 15px;">
+                    <div class="media bili-ranking-media" style="margin-bottom: 15px;">
                         <div class="media-left">
                             <span class="label label-primary" style="display:inline-block;">1</span>
                         </div>
@@ -418,38 +417,40 @@ foreach ($result as $value) {
 
     </div>
     <hr style="margin-top: 10px;">
-    <div class="col-md-4">
 
-        <div class="alert alert-warning" role="alert">
-            <div class="row">
-                <div class="col-md-12">暗杀教室</div>
-            </div>
-            <hr style="margin-top: 10px;">
-            <div class="row">
-                <div class="col-md-5">
-                    <img src="images/cover/Ace.png" style="width: 100%;">
+
+</div>
+<div class="container bili-ranking-panel" style="display: none;position:absolute;">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="alert alert-warning" role="alert">
+                <div class="row">
+                    <div class="col-md-12">暗杀教室</div>
                 </div>
-                <div class="col-md-7">
-                    <p style="height: 63px;overflow: hidden;">
-                        震惊！龙女仆里配音过的角色最多的声优，小野大辅只排第二，第一竟然是TA！
-                        开玩笑开玩笑。平时经常会搜罗一下自己喜欢的角色的cv的履历，
-                        然后不停的惊讶于一个声优竟然可以配音这么多风格迥异的角色，甚至声音听起来完全不一样！
-                    </p>
+                <hr style="margin-top: 10px;">
+                <div class="row">
+                    <div class="col-md-5">
+                        <img src="images/cover/Ace.png" style="width: 100%;">
+                    </div>
+                    <div class="col-md-7">
+                        <p style="height: 63px;overflow: hidden;">
+                            震惊！龙女仆里配音过的角色最多的声优，小野大辅只排第二，第一竟然是TA！
+                            开玩笑开玩笑。平时经常会搜罗一下自己喜欢的角色的cv的履历，
+                            然后不停的惊讶于一个声优竟然可以配音这么多风格迥异的角色，甚至声音听起来完全不一样！
+                        </p>
+                    </div>
                 </div>
-            </div>
-            <hr style="margin-bottom: 10px;">
-            <div class="row">
-                <div class="col-md-3">暗杀教室</div>
-                <div class="col-md-3">暗杀教室</div>
-                <div class="col-md-3">暗杀教室</div>
-                <div class="col-md-3">暗杀教室</div>
+                <hr style="margin-bottom: 10px;">
+                <div class="row">
+                    <div class="col-md-3"><span class="glyphicon glyphicon-expand"></span>&nbsp;1111</div>
+                    <div class="col-md-3"><span class="glyphicon glyphicon-comment"></span>&nbsp;1111</div>
+                    <div class="col-md-3"><span class="glyphicon glyphicon-heart-empty"></span>&nbsp;1111</div>
+                    <div class="col-md-3"><span class="glyphicon glyphicon-star"></span>&nbsp;2222</div>
+                </div>
             </div>
         </div>
-
-
     </div>
 </div>
-
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="assets/jquery.min.js"></script>
@@ -488,6 +489,17 @@ foreach ($result as $value) {
         $(this).siblings(".bili-video-background").css("display", "none");
     });
 
+    $(".bili-ranking-media").mouseover(function () {
+        var left = $(this).parents().offset().left;
+        var top = $(this).offset().top;
+        $(".bili-ranking-panel").css("display", "block");
+        $(".bili-ranking-panel").offset(
+            {
+                top: top, left: left
+            }
+        );
+
+    })
 </script>
 
 
