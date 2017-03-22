@@ -49,6 +49,8 @@ foreach ($result as $value) {
                       </div>
                     </div>';
 }
+
+
 $bili_video_html = "";
 $sql = "SELECT
 animation_detail.id,
@@ -95,8 +97,70 @@ foreach ($result as $value) {
                         </a>
                     </div>
                 </div>";
-
 }
+
+
+$bili_ranking_html = "";
+$sql = "SELECT
+animation_detail.id,
+animation_detail.`name`,
+animation_detail.image_name
+FROM
+animation_detail
+LIMIT 1";
+
+$result = mysqli_fetch_all(mysqli_query($a, $sql), MYSQLI_ASSOC);
+foreach ($result as $key => $value) {
+    $bili_ranking_html .= '
+<div class="col-md-12">
+                    <div class="media bili-ranking-media" style="margin-bottom: 15px;">
+                        <div class="media-left">
+                            <span class="label label-primary" style="display:inline-block;">' . ($key + 1) . '</span>
+                        </div>
+                        <div class="media-left">
+                            <a href="#">
+                                <img class="media-object" src="images/cover/' . $value['image_name'] . '.png" style="height: 50px;">
+                            </a>
+                        </div>
+                        <div class="media-body media-heading">
+                            <a href="#">' . $value['name'] . '</a>
+                        </div>
+                    </div>
+                    </div>';
+}
+$bili_ranking_left_html = "";
+
+
+
+$sql = "SELECT
+animation_detail.id,
+animation_detail.`name`,
+animation_detail.image_name
+FROM
+animation_detail
+LIMIT 1,6";
+$result = mysqli_fetch_all(mysqli_query($a, $sql), MYSQLI_ASSOC);
+foreach ($result as $key => $value) {
+    $bili_ranking_left_html .= '
+    <div class="col-md-12">
+                    <div class="media bili-ranking-media" style="margin-bottom: 15px;">
+                        <div class="media-left">
+                            <span class="label label-primary" style="display:inline-block;">' . ($key + 2) . '</span>
+                        </div>
+                        <div class="media-body">
+                            <a href="#">
+                                <div style="height: 20px;overflow: hidden;">
+                                ' . $value['name'] . '</div>
+                            </a>
+                        </div>
+                    </div>
+                </div>';
+}
+
+
+
+
+
 //echo $title_html;
 ?>
 <!DOCTYPE html>
@@ -318,111 +382,15 @@ foreach ($result as $value) {
             </div>
 
             <div class="row">
-                <div class="col-md-12">
-                    <div class="media bili-ranking-media" style="margin-bottom: 15px;">
-                        <div class="media-left">
-                            <span class="label label-primary" style="display:inline-block;">1</span>
-                        </div>
-                        <div class="media-left">
-                            <a href="#">
-                                <img class="media-object" src="images/cover/Ace.png" style="height: 50px;">
-                            </a>
-                        </div>
-                        <div class="media-body">
-                            <p class="media-heading">暗杀教室</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="media bili-ranking-media" style="margin-bottom: 15px;">
-                        <div class="media-left">
-                            <span class="label label-primary" style="display:inline-block;">1</span>
-                        </div>
-                        <div class="media-body">
-                            <a href="#">
-                                <div style="height: 20px;overflow: hidden;">
-                                    暗杀教室暗杀教室暗杀教室暗杀教室暗杀教室暗杀教室暗杀教室暗杀教
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="media bili-ranking-media" style="margin-bottom: 15px;">
-                        <div class="media-left">
-                            <span class="label label-primary" style="display:inline-block;">1</span>
-                        </div>
-                        <div class="media-body">
-                            <a href="#">
-                                <div style="height: 20px;overflow: hidden;">
-                                    暗杀教室暗杀教室暗杀教室暗杀教室暗杀教室暗杀教室暗杀教室暗杀教
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="media bili-ranking-media" style="margin-bottom: 15px;">
-                        <div class="media-left">
-                            <span class="label label-primary" style="display:inline-block;">1</span>
-                        </div>
-                        <div class="media-body">
-                            <a href="#">
-                                <div style="height: 20px;overflow: hidden;">
-                                    暗杀教室暗杀教室暗杀教室暗杀教室暗杀教室暗杀教室暗杀教室暗杀教
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="media bili-ranking-media" style="margin-bottom: 15px;">
-                        <div class="media-left">
-                            <span class="label label-primary" style="display:inline-block;">1</span>
-                        </div>
-                        <div class="media-body">
-                            <a href="#">
-                                <div style="height: 20px;overflow: hidden;">
-                                    暗杀教室暗杀教室暗杀教室暗杀教室暗杀教室暗杀教室暗杀教室暗杀教
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="media bili-ranking-media" style="margin-bottom: 15px;">
-                        <div class="media-left">
-                            <span class="label label-primary" style="display:inline-block;">1</span>
-                        </div>
-                        <div class="media-body">
-                            <a href="#">
-                                <div style="height: 20px;overflow: hidden;">
-                                    暗杀教室暗杀教室暗杀教室暗杀教室暗杀教室暗杀教室暗杀教室暗杀教
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div class="media bili-ranking-media" style="margin-bottom: 15px;">
-                        <div class="media-left">
-                            <span class="label label-primary" style="display:inline-block;">1</span>
-                        </div>
-                        <div class="media-body">
-                            <a href="#">
-                                <div style="height: 20px;overflow: hidden;">
-                                    暗杀教室暗杀教室暗杀教室暗杀教室暗杀教室暗杀教室暗杀教室暗杀教
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+                <?php
+                echo $bili_ranking_html;
+                echo $bili_ranking_left_html;
+                ?>
+                <div class="col-md-offset-2 col-md-8"><a class="btn btn-xs btn-block btn-default" href="#"
+                                                         role="button">查看更多</a></div>
 
-
-                <div class="col-md-offset-2 col-md-8">
-                    <a class="btn btn-xs btn-block btn-default" href="#" role="button">查看更多</a>
-                </div>
             </div>
+
         </div>
 
     </div>
@@ -433,7 +401,8 @@ foreach ($result as $value) {
 <div class="container bili-ranking-panel" style="display: none;position:absolute;transition: all .2s linear;">
     <div class="row">
         <div class="col-md-4">
-            <div class="alert alert-warning" role="alert" style="margin-bottom: 5px;box-shadow:2px 2px rgba(0,0,0,0.16);">
+            <div class="alert alert-warning" role="alert"
+                 style="margin-bottom: 5px;box-shadow:2px 2px rgba(0,0,0,0.16);">
                 <div class="row">
                     <div class="col-md-12">暗杀教室</div>
                 </div>

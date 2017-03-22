@@ -29,6 +29,8 @@ h4 {
 
 .bili-item-mask p:nth-child(1) {
     margin-top: 10px;
+    height: 40px;
+    overflow: hidden;
 }
 
 .bili-item-mask p:nth-child(2) {
@@ -59,6 +61,7 @@ h4 {
 
 .bili-video-title {
     height: 40px;
+
 }
 
 .bili-video-title > a > div:nth-child(1) {
@@ -123,3 +126,8 @@ h4 {
     background-color: #fff;
     transition: all .2s linear;
 }
+
+.bili-video-title > a > div :nth-child(2) {
+    background-color: #ffffff;
+}
+
