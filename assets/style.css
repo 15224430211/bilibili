@@ -131,3 +131,24 @@ h4 {
     background-color: #ffffff;
 }
 
+.bili-video-background > img {
+    width: 100%;
+}
+
+.bili-ranking-media {
+    margin-bottom: 15px;
+}
+
+.bili-ranking-media > div > span {
+    display: inline-block;
+}
+
+.bili-ranking-media > div:nth-child(2) > a > img {
+    height: 50px;
+}
+
+.bili-ranking-media > .media-body > a > div {
+    height: 20px;
+    overflow: hidden;
+}
+

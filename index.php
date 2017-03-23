@@ -69,7 +69,7 @@ foreach ($result as $value) {
         "<div class='col-md-3' data-video-id='{$value["id"]}'>
                     <img class='bili-video-img' src='images/cover/" . $value['image_name'] . ".png'>
                     <div class='bili-video-background'>
-                        <img src='#' style='width: 100%;'>
+                        <img src='#'>
                     </div>
                     <div class='bili-video-mask'>
                      <div class='bili-video-progress'>
@@ -114,13 +114,13 @@ foreach ($result as $key => $value) {
     if ($key == 0) {
         $bili_ranking_html .= "
 <div class='col-md-12' data-video-id='{$value["id"]}'>
-                    <div class='media bili-ranking-media' style='margin-bottom: 15px;'>
+                    <div class='media bili-ranking-media'>
                         <div class='media-left'>
-                            <span class='label label-primary' style='display:inline-block;'>" . ($key + 1) . "</span>
+                            <span class='label label-primary'>" . ($key + 1) . "</span>
                         </div>
                         <div class='media-left'>
                             <a href='#'>
-                                <img class='media-object' src='images/cover/" . $value['image_name'] . ".png' style='height: 50px;'>
+                                <img class='media-object' src='images/cover/" . $value['image_name'] . ".png'>
                             </a>
                         </div>
                         <div class='media-body media-heading'>
@@ -131,13 +131,13 @@ foreach ($result as $key => $value) {
     } else {
         $bili_ranking_html .= "
     <div class='col-md-12' data-video-id='{$value["id"]}'>
-                    <div class='media bili-ranking-media' style='margin-bottom: 15px;'>
+                    <div class='media bili-ranking-media'>
                         <div class='media-left'>
-                            <span class='label label-primary' style='display:inline-block;'>" . ($key + 1) . "</span>
+                            <span class='label label-primary'>" . ($key + 1) . "</span>
                         </div>
                         <div class='media-body'>
                             <a href='#'>
-                                <div style='height: 20px;overflow: hidden;'>
+                                <div>
                                 " . $value['name'] . "</div>
                             </a>
                         </div>
