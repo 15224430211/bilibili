@@ -61,7 +61,10 @@ h4 {
 
 .bili-video-title {
     height: 40px;
+}
 
+.bili-video-title a {
+    color: black;
 }
 
 .bili-video-title > a > div:nth-child(1) {
@@ -139,6 +142,11 @@ h4 {
     margin-bottom: 15px;
 }
 
+.bili-ranking-media a {
+    color: black;
+
+}
+
 .bili-ranking-media > div > span {
     display: inline-block;
 }
@@ -156,6 +164,7 @@ h4 {
     display: none;
     position: absolute;
     transition: all .2s linear;
+    z-index: 999;
 }
 
 .bili-ranking-panel > div > div > .alert-warning {
@@ -172,8 +181,18 @@ h4 {
     overflow: hidden;
 }
 
-.bili-ranking-panel .col-md-3{
+.bili-ranking-panel .col-md-3 {
     white-space: nowrap;
     padding-right: 5px;
     overflow: hidden;
+}
+
+.bili-footer p {
+    color: black;
+    text-align: center;
+}
+
+.bili-footer img {
+    margin: 0 auto;
+    display: block;
 }

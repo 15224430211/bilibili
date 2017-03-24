@@ -61,7 +61,7 @@ animation_detail.length
 FROM
 animation_detail
 WHERE
-animation_detail.categoris_id =".$categoris_value['id']."
+animation_detail.categoris_id =" . $categoris_value['id'] . "
 LIMIT 8";
     $result = mysqli_fetch_all(mysqli_query($a, $sql), MYSQLI_ASSOC);
     foreach ($result as $value) {
@@ -79,10 +79,10 @@ LIMIT 8";
                                 </div>
                             </div>
                      </div>
-                     <div class='text-right'>  " . $value['length'] . "</div>
+                     <div class='text-right'>" . $value['length'] . "</div>
                     </div>
                     <div class='bili-video-title'><a href='#'>
-                    <div> " . $value['name'] . "</div>
+                    <div>" . $value['name'] . "</div>
                             <div class='row'>
                                 <div class='col-md-6'>
                                     <div style='color: #aaa;'>
@@ -99,8 +99,8 @@ LIMIT 8";
     }
     $bili_video_html = "<div class='col-md-8'>
             <div class='row'>
-                <div class='col-md-1'><img src='images/icons/".$categoris_value['id'].".png'/></div>
-                <div class='col-md-1' style='padding: 0px'><a href='#'><h4>".$categoris_value['name']."</h4></a>
+                <div class='col-md-1'><img src='images/icons/" . $categoris_value['id'] . ".png'/></div>
+                <div class='col-md-1' style='padding: 0px'><a href='#'><h4>" . $categoris_value['name'] . "</h4></a>
                 </div>
                 <div class='col-md-4'>
                     <ul class='nav nav-tabs nav-justified'>
@@ -132,7 +132,7 @@ animation_detail.image_name
 FROM
 animation_detail
 WHERE
-animation_detail.categoris_id =".$categoris_value['id']."
+animation_detail.categoris_id =" . $categoris_value['id'] . "
 LIMIT 7";
     $result = mysqli_fetch_all(mysqli_query($a, $sql), MYSQLI_ASSOC);
     foreach ($result as $key => $value) {
@@ -140,8 +140,7 @@ LIMIT 7";
             $bili_ranking_html .= "
 <div class='col-md-12' data-video-id='{$value["id"]}'>
                     <div class='media bili-ranking-media'>
-                        <div class='media-left'>
-                            <span class='label label-primary'>" . ($key + 1) . "</span>
+                        <div class='media-left'><span class='label label-primary'>" . ($key + 1) . "</span>
                         </div>
                         <div class='media-left'>
                             <a href='#'>
@@ -232,6 +231,44 @@ LIMIT 7";
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>
+
+
+<div class="container bili-ranking-panel">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="alert alert-warning" role="alert">
+                <div class="row">
+                    <div class="col-md-12 bili-ranking-panel-name"><b></b></div>
+                </div>
+                <hr style="margin-top: 10px;">
+                <div class="row">
+                    <div class="col-md-5">
+                        <img class="bili-ranking-panel-img" src="" alt="fuck">
+                    </div>
+                    <div class="col-md-7">
+                        <p class="bili-ranking-panel-detail"></p>
+                    </div>
+                </div>
+                <hr style="margin-bottom: 10px;">
+                <div class="row">
+                    <div class="col-md-3">
+                        <span class="glyphicon glyphicon-expand"></span>&nbsp;<b class="bili-ranking-panel-click-count"></b>
+                    </div>
+                    <div class="col-md-3">
+                        <span class="glyphicon glyphicon-comment"></span>&nbsp;<b class="bili-ranking-panel-comment-count"></b>
+                    </div>
+                    <div class="col-md-3">
+                        <span class="glyphicon glyphicon-heart-empty"></span>&nbsp;<b class="bili-ranking-panel-fav-count"></b>
+                    </div>
+                    <div class="col-md-3">
+                        <span class="glyphicon glyphicon-usd"></span>&nbsp;<b class="bili-ranking-panel-coin-count"></b>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <div class="top-background">
     <div class="container">
@@ -344,48 +381,78 @@ LIMIT 7";
             </div>
         </div>
     </div>
-
     <?php
     echo $bili_video_ranking_html;
     ?>
 </div>
 
 
-<div class="container bili-ranking-panel">
-    <div class="row">
-        <div class="col-md-4">
-            <div class="alert alert-warning" role="alert">
+<div class="bili-footer" style="background-color: #CCCCFF;">
+    <div class="container">
+        <hr>
+        <div class="row">
+            <div class="col-md-4">
+                <div style="margin-bottom: 20px;">bili</div>
                 <div class="row">
-                    <div class="col-md-12 bili-ranking-panel-name"><b></b></div>
-                </div>
-                <hr style="margin-top: 10px;">
-                <div class="row">
-                    <div class="col-md-5">
-                        <img class="bili-ranking-panel-img" src="" alt="fuck">
+                    <div class="col-md-4">
+                        <div><a href="#"><p>关于我们</p></a></div>
+                        <div><a href="#"><p>友情链接</p></a></div>
                     </div>
-                    <div class="col-md-7">
-                        <p class="bili-ranking-panel-detail"></p>
+                    <div class="col-md-4">
+                        <div><a href="#"><p>哔哩周边</p></a></div>
+                        <div><a href="#"><p>联系我们</p></a></div>
                     </div>
-                </div>
-                <hr style="margin-bottom: 10px;">
-                <div class="row">
-                    <div class="col-md-3">
-                        <span class="glyphicon glyphicon-expand"></span>&nbsp;<b class="bili-ranking-panel-click-count"></b>
-                    </div>
-                    <div class="col-md-3">
-                        <span class="glyphicon glyphicon-comment"></span>&nbsp;<b class="bili-ranking-panel-comment-count"></b>
-                    </div>
-                    <div class="col-md-3">
-                        <span class="glyphicon glyphicon-heart-empty"></span>&nbsp;<b class="bili-ranking-panel-fav-count"></b>
-                    </div>
-                    <div class="col-md-3">
-                        <span class="glyphicon glyphicon-usd"></span>&nbsp;<b class="bili-ranking-panel-coin-count"></b>
+                    <div class="col-md-4">
+                        <div><a href="#"><p>加入我们</p></a></div>
+                        <div><a href="#"><p>官方认证</p></a></div>
                     </div>
                 </div>
             </div>
+            <div class="col-md-4" style="border-left: solid 1px #e5e9ef;border-right:solid 1px #e5e9ef;">
+                <div style="margin-bottom: 20px;">传送门</div>
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <div><a href="#"><p>帮助中心</p></a></div>
+                        <div><a href="#"><p>侵权申诉</p></a></div>
+                        <div><a href="#"><p>用户反馈</p></a></div>
+                    </div>
+                    <div class="col-md-4">
+                        <div><a href="#"><p>高级弹幕</p></a></div>
+                        <div><a href="#"><p>分院帽</p></a></div>
+                        <div><a href="#"><p>壁纸站</p></a></div>
+                    </div>
+                    <div class="col-md-4">
+                        <div><a href="#"><p>活动专题</p></a></div>
+                        <div><a href="#"><p>活动中心</p></a></div>
+                        <div><a href="#"><p>名人堂</p></a></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="col-md-4">
+                    <img src="images/icons/download.png">
+                    <a href="#"><p>手机端下载</p></a>
+                </div>
+                <div class="col-md-4">
+                    <img src="images/icons/weibo.png">
+                    <a href="#"><p>新浪微博</p></a>
+                </div>
+                <div class="col-md-4">
+                    <img src="images/icons/wechat.png">
+                    <a href="#"><p>官方微信</p></a>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <p>Copyright © 2017 By Lemon</p>
+            </div>
         </div>
     </div>
+
 </div>
+
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="assets/jquery.min.js"></script>
