@@ -1,7 +1,6 @@
 <?php
 $a = mysqli_connect("127.0.0.1", "root", "", "bilibili");
 $categoris_html = "";
-//var_dump($a);
 $sql = "SELECT
 categoris.`name`,
 categoris.id,
@@ -9,17 +8,16 @@ categoris.visit_count,
 categoris.daily_count
 FROM
 categoris";
-$result = mysqli_fetch_all(mysqli_query($a, $sql), MYSQLI_ASSOC);
-//echo (json_encode($result,JSON_UNESCAPED_UNICODE));
-foreach ($result as $key => $value) {
-//    echo $value["name"];
+$result_categoris = mysqli_fetch_all(mysqli_query($a, $sql), MYSQLI_ASSOC);
+foreach ($result_categoris as $key => $value) {
     $categoris_html .= '<li>
             <a href="#" style="text-align: center;"><span class="label label-info">' . $value["daily_count"] . '</span>
                 <div>' . $value["name"] . '</div>
             </a>
         </li>';
 }
-//echo $categoris_html;
+
+
 $title_html = "";
 $sql = "SELECT
 animation_detail.image_name,
@@ -35,7 +33,6 @@ animation_detail
 LIMIT 6";
 $result = mysqli_fetch_all(mysqli_query($a, $sql), MYSQLI_ASSOC);
 foreach ($result as $value) {
-
     $title_html .= '<div class="col-md-4">
                       <div class="bili-item">
                         <a href="#">
@@ -51,8 +48,10 @@ foreach ($result as $value) {
 }
 
 
-$bili_video_html = "";
-$sql = "SELECT
+$bili_video_ranking_html = "";
+foreach ($result_categoris as $categoris_key => $categoris_value) {
+    $bili_video_html = "";
+    $sql = "SELECT
 animation_detail.id,
 animation_detail.`name`,
 animation_detail.click_count,
@@ -61,12 +60,13 @@ animation_detail.image_name,
 animation_detail.length
 FROM
 animation_detail
+WHERE
+animation_detail.categoris_id =".$categoris_value['id']."
 LIMIT 8";
-
-$result = mysqli_fetch_all(mysqli_query($a, $sql), MYSQLI_ASSOC);
-foreach ($result as $value) {
-    $bili_video_html .=
-        "<div class='col-md-3' data-video-id='{$value["id"]}'>
+    $result = mysqli_fetch_all(mysqli_query($a, $sql), MYSQLI_ASSOC);
+    foreach ($result as $value) {
+        $bili_video_html .=
+            "<div class='col-md-3' data-video-id='{$value['id']}'>
                     <img class='bili-video-img' src='images/cover/" . $value['image_name'] . ".png'>
                     <div class='bili-video-background'>
                         <img src='#'>
@@ -90,29 +90,54 @@ foreach ($result as $value) {
                                 </div>
                                 <div class='col-md-6'>
                                     <div style='color: #aaa;'>
-                                        <span class='glyphicon glyphicon-comment'></span>&nbsp;" . $value['comment_count'] . "
-</div>
+                                        <span class='glyphicon glyphicon-comment'></span>&nbsp;" . $value['comment_count'] . "</div>
                                 </div>
                             </div>
                         </a>
                     </div>
                 </div>";
-}
+    }
+    $bili_video_html = "<div class='col-md-8'>
+            <div class='row'>
+                <div class='col-md-1'><img src='images/icons/".$categoris_value['id'].".png'/></div>
+                <div class='col-md-1' style='padding: 0px'><a href='#'><h4>".$categoris_value['name']."</h4></a>
+                </div>
+                <div class='col-md-4'>
+                    <ul class='nav nav-tabs nav-justified'>
+                        <li role='presentation' class='active'><a href='#'>有新动态</a></li>
+                        <li role='presentation'><a href='#'>最新投稿</a></li>
+                    </ul>
+                </div>
+                <div class='col-md-2'></div>
+                <div class='col-md-2' style='padding-right:0;'><h5>
+                        <button type='button' class='btn btn-default btn-block btn-xs'>
+                        <span class='glyphicon glyphicon-refresh'></span>&nbsp;111新动态</button></h5>
+                </div>
+                <div class='col-md-2'>
+                    <h5>
+                        <a class='btn btn-default btn-block btn-xs' href='#' role='button'>
+                            更多&nbsp;<span class='glyphicon glyphicon-chevron-right'></span> </a>
+                    </h5>
+                </div>
+            </div>
+            <div class='row'>" . $bili_video_html
+        . "</div>
+        </div>";
 
-
-$bili_ranking_html = "";
-$sql = "SELECT
+    $bili_ranking_html = "";
+    $sql = "SELECT
 animation_detail.id,
 animation_detail.`name`,
 animation_detail.image_name
 FROM
 animation_detail
+WHERE
+animation_detail.categoris_id =".$categoris_value['id']."
 LIMIT 7";
-
-$result = mysqli_fetch_all(mysqli_query($a, $sql), MYSQLI_ASSOC);
-foreach ($result as $key => $value) {
-    if ($key == 0) {
-        $bili_ranking_html .= "
+    $result = mysqli_fetch_all(mysqli_query($a, $sql), MYSQLI_ASSOC);
+    foreach ($result as $key => $value) {
+        if ($key == 0) {
+            $bili_ranking_html .= "
 <div class='col-md-12' data-video-id='{$value["id"]}'>
                     <div class='media bili-ranking-media'>
                         <div class='media-left'>
@@ -128,8 +153,8 @@ foreach ($result as $key => $value) {
                         </div>
                     </div>
                     </div>";
-    } else {
-        $bili_ranking_html .= "
+        } else {
+            $bili_ranking_html .= "
     <div class='col-md-12' data-video-id='{$value["id"]}'>
                     <div class='media bili-ranking-media'>
                         <div class='media-left'>
@@ -143,12 +168,32 @@ foreach ($result as $key => $value) {
                         </div>
                     </div>
                 </div>";
+        }
     }
+    $bili_ranking_html = "<div class='col-md-4'>
+            <div class='row'>
+                <div class='col-md-3'><h3 style='margin-top: 10px'>排行</h3>
+                </div>
+                <div class='col-md-3 col-md-offset-6'>
+                    <div class='dropdown' style='margin-top: 5px;'>
+                        <button class='btn btn-default dropdown-toggle' type='button' id='dropdownMenu1' data-toggle='dropdown'>
+                                    三日 <span class='caret'></span>
+                        </button>
+                        <ul class='dropdown-menu' style='min-width: 0;'>
+                            <li><a href='#'>一周</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class='row'>" . $bili_ranking_html . "
+            <div class='col-md-offset-2 col-md-8'><a class='btn btn-xs btn-block btn-default' href='#' role='button'>查看更多</a>
+            </div>
 
-
+</div>
+</div>";
+    $bili_video_ranking_html .= "<hr><div class='row'>" . $bili_video_html . $bili_ranking_html . "</div>
+";
 }
-
-//echo $title_html;
 ?>
 <!DOCTYPE html>
 <html lang="zh-CN">
@@ -156,18 +201,11 @@ foreach ($result as $key => $value) {
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     <title>My bilibili</title>
-
-    <!-- Bootstrap -->
     <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-    <link href="images/icons/favicon.ico">
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
+    <link rel="shortcut icon" href="//static.hdslb.com/images/favicon.ico">
     <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
     <link rel="stylesheet" type="text/css" href="assets/style.css"/>
     <style></style>
 
@@ -307,119 +345,41 @@ foreach ($result as $key => $value) {
         </div>
     </div>
 
-    <hr>
-    <div class="row">
-        <div class="col-md-8">
-            <div class="row">
-                <div class="col-md-1">
-                    <img src="images/icons/MJ.png"/>
-                </div>
-                <div class="col-md-1" style="padding: 0px">
-                    <a href="#">
-                        <h4>动画</h4>
-                    </a>
-                </div>
-                <div class="col-md-4">
-                    <ul class="nav nav-tabs nav-justified">
-                        <li role="presentation" class="active"><a href="#">有新动态</a></li>
-                        <li role="presentation"><a href="#">最新投稿</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-2"></div>
-                <div class="col-md-2" style="padding-right:0;">
-                    <h5>
-                        <button type="button" class="btn btn-default btn-block btn-xs">
-                            <span class="glyphicon glyphicon-refresh"></span>&nbsp;111新动态
-                        </button>
-                    </h5>
-                </div>
-                <div class="col-md-2">
-                    <h5>
-                        <a class="btn btn-default btn-block btn-xs" href="#" role="button">
-                            更多&nbsp;<span class="glyphicon glyphicon-chevron-right"></span> </a>
-                    </h5>
-                </div>
-
-
-            </div>
-            <div class="row">
-                <?php
-                echo $bili_video_html;
-                ?>
-            </div>
-        </div>
-
-        <div class="col-md-4">
-            <div class="row">
-                <div class="col-md-3">
-                    <h3 style="margin-top: 10px">排行</h3>
-                </div>
-                <div class="col-md-3 col-md-offset-6">
-                    <div class="dropdown" style="margin-top: 5px;">
-                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1"
-                                data-toggle="dropdown">
-                            三日
-                            <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu" style="min-width: 0;">
-                            <li><a href="#">一周</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <?php
-                echo $bili_ranking_html;
-                ?>
-                <div class="col-md-offset-2 col-md-8"><a class="btn btn-xs btn-block btn-default" href="#"
-                                                         role="button">查看更多</a></div>
-
-            </div>
-
-        </div>
-
-    </div>
-    <hr style="margin-top: 10px;">
-
-
+    <?php
+    echo $bili_video_ranking_html;
+    ?>
 </div>
 
 
-<div class="container bili-ranking-panel" style="display: none;position:absolute;transition: all .2s linear;">
+<div class="container bili-ranking-panel">
     <div class="row">
         <div class="col-md-4">
-            <div class="alert alert-warning" role="alert"
-                 style="margin-bottom: 5px;box-shadow:2px 2px rgba(0,0,0,0.16);">
+            <div class="alert alert-warning" role="alert">
                 <div class="row">
-                    <div class="col-md-12 bili-ranking-panel-name"><b>暗杀教室</b></div>
+                    <div class="col-md-12 bili-ranking-panel-name"><b></b></div>
                 </div>
                 <hr style="margin-top: 10px;">
                 <div class="row">
                     <div class="col-md-5">
-                        <img class="bili-ranking-panel-img" src="images/cover/Ace.png" style="width: 100%;">
+                        <img class="bili-ranking-panel-img" src="" alt="fuck">
                     </div>
                     <div class="col-md-7">
-                        <p class="bili-ranking-panel-detail" style="height: 63px;overflow: hidden;">
-                            震惊！龙女仆里配音过的角色最多的声优，小野大辅只排第二，第一竟然是TA！
-                            开玩笑开玩笑。平时经常会搜罗一下自己喜欢的角色的cv的履历，
-                            然后不停的惊讶于一个声优竟然可以配音这么多风格迥异的角色，甚至声音听起来完全不一样！
-                        </p>
+                        <p class="bili-ranking-panel-detail"></p>
                     </div>
                 </div>
                 <hr style="margin-bottom: 10px;">
                 <div class="row">
                     <div class="col-md-3">
-                        <span class="glyphicon glyphicon-expand"></span>&nbsp;<b class="bili-ranking-panel-click-count">1111</b>
+                        <span class="glyphicon glyphicon-expand"></span>&nbsp;<b class="bili-ranking-panel-click-count"></b>
                     </div>
                     <div class="col-md-3">
-                        <span class="glyphicon glyphicon-comment"></span>&nbsp;<b class="bili-ranking-panel-comment-count">1111</b>
+                        <span class="glyphicon glyphicon-comment"></span>&nbsp;<b class="bili-ranking-panel-comment-count"></b>
                     </div>
                     <div class="col-md-3">
-                        <span class="glyphicon glyphicon-heart-empty"></span>&nbsp;<b class="bili-ranking-panel-fav-count">1111</b>
+                        <span class="glyphicon glyphicon-heart-empty"></span>&nbsp;<b class="bili-ranking-panel-fav-count"></b>
                     </div>
                     <div class="col-md-3">
-                        <span class="glyphicon glyphicon-usd"></span>&nbsp;<b class="bili-ranking-panel-coin-count">2222</b>
+                        <span class="glyphicon glyphicon-usd"></span>&nbsp;<b class="bili-ranking-panel-coin-count"></b>
                     </div>
                 </div>
             </div>

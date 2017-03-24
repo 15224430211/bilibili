@@ -27,3 +27,7 @@ function myfunction($result)
     return $fuck;
 }
 
+
+
+
+

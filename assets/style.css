@@ -152,3 +152,28 @@ h4 {
     overflow: hidden;
 }
 
+.bili-ranking-panel {
+    display: none;
+    position: absolute;
+    transition: all .2s linear;
+}
+
+.bili-ranking-panel > div > div > .alert-warning {
+    margin-bottom: 5px;
+    box-shadow: 2px 2px rgba(0, 0, 0, 0.16);
+}
+
+.bili-ranking-panel img {
+    width: 100%;
+}
+
+.bili-ranking-panel p {
+    height: 63px;
+    overflow: hidden;
+}
+
+.bili-ranking-panel .col-md-3{
+    white-space: nowrap;
+    padding-right: 5px;
+    overflow: hidden;
+}
