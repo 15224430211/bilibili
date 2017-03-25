@@ -221,15 +221,14 @@ LIMIT 7";
                 <li><a href="#"><span class="glyphicon glyphicon-expand"></span>&nbsp;直播</a></li>
                 <li><a href="#">周边</a></li>
                 <li><a href="#">移动端</a></li>
-
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#">登录</a></li>
                 <li><a href="#">注册</a></li>
                 <li><a href="#">投稿</a></li>
             </ul>
-        </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
+        </div>
+    </div>
 </nav>
 
 
@@ -454,9 +453,7 @@ LIMIT 7";
 </div>
 
 
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="assets/jquery.min.js"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="assets/bootstrap.min.js"></script>
 
 <script>

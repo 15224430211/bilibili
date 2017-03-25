@@ -109,6 +109,11 @@ h4 {
     height: 2px;
 }
 
+.bili-video-progress > .progress > .progress-bar {
+    transition: none;
+    -webkit-transition: none;
+}
+
 .bili-video-mask > .text-right {
     position: absolute;
     margin: 0 5px;
@@ -196,3 +201,20 @@ h4 {
     margin: 0 auto;
     display: block;
 }
+
+
+.bili-search-search-bar{
+    margin-bottom: 20px;
+}
+
+.bili-search-search-bar > li a:hover {
+    border: none;
+    border-bottom: 1px solid #66CCCC;
+    background-color: #ffffff;
+}
+
+.bili-search-filter div > div > ul > li a {
+    color: #000;
+}
+
+
