@@ -509,6 +509,7 @@ LIMIT 7";
 
     $(".bili-ranking-panel").mouseleave(function () {
         $(this).css("display", "none");
+        $(this).siblings(".bili-ranking-media").css("display", "none");
     });
 
 

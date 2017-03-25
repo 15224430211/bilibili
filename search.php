@@ -1,5 +1,75 @@
 <?php
 $a = mysqli_connect("127.0.0.1", "root", "", "bilibili");
+$search_html = "";
+$sql = 'SELECT
+animation_detail.id,
+animation_detail.`name`,
+animation_detail.update_time,
+animation_detail.click_count,
+animation_detail.comment_count,
+animation_detail.fav_count,
+animation_detail.coin_count,
+animation_detail.image_name,
+animation_detail.length,
+animation_detail.detail,
+animation_detail.id,
+animation_detail.`name`,
+animation_detail.update_time,
+animation_detail.click_count,
+animation_detail.comment_count,
+animation_detail.fav_count,
+animation_detail.coin_count,
+animation_detail.image_name,
+animation_detail.length,
+animation_detail.detail,
+animation_detail.categoris_id,
+categoris.id,
+categoris.`name` AS fuck
+FROM
+animation_detail ,
+categoris
+WHERE
+categoris.id=animation_detail.categoris_id
+LIMIT 8';
+$result = mysqli_fetch_all(mysqli_query($a, $sql), MYSQLI_ASSOC);
+foreach ($result as $key => $value) {
+    $search_html .= '<div class="col-md-12">
+            <div class="row">
+                <div class="col-md-3 bili-search-detail-img">
+                    <img src="images/cover/' . $value['image_name'] . '.png" >
+                    <div>' . $value['length'] . '</div>
+                </div>
+                <div class="col-md-8">
+                    <div class="row">
+                        <div class="col-md-12 bili-search-detail-name">
+                            <h4 style="margin-top: 0;display:flex;">
+                                <span class="label label-primary" style="display:inline-block;">1</span>&nbsp;<a href="#">' . $value['name'] . '</a>
+                            </h4>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p style="overflow: hidden;height: 80px;">' . $value['detail'] . '</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <span class="glyphicon glyphicon-play">&nbsp;' . $value['click_count'] . '</span>
+                        </div>
+                        <div class="col-md-2">
+                            <span class="glyphicon glyphicon-comment">&nbsp;' . $value['comment_count'] . '</span>
+                        </div>
+                        <div class="col-md-2">
+                            <span class="glyphicon glyphicon-time">&nbsp;' . substr($value['update_time'], 2, 9) . '</span>
+                        </div>
+                        <div class="col-md-2">up主:&nbsp;</div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>';
+}
 
 
 ?>
@@ -143,47 +213,11 @@ $a = mysqli_connect("127.0.0.1", "root", "", "bilibili");
     </div>
     <hr>
     <div class="row bili-search-detail">
-        <div class="col-md-12">
-            <div class="row">
-                <div class="col-md-3 bili-search-detail-img">
-                    <img src="images/cover/1.png" >
-                    <div>length</div>
-                </div>
-                <div class="col-md-9">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h3 style="margin-top: 0;">
-                                <span class="label label-default" style="width: 100%;">动画</span>&nbsp;<a href="#">银魂</a>
-                            </h3>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <p style="overflow: hidden;height: 80px;">春天晴空万里的一天，去赏花的万事屋的一行人，撞上了一样到那里去赏花的真选组。
-                                在赏花地点开始了万事屋和真选组之间的争斗，由于在有平民的地方动刀不好，
-                            </p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-2">
-                            <span class="glyphicon glyphicon-circle-arrow-right">&nbsp;111</span>
-                        </div>
-                        <div class="col-md-2">
-                            <span class="glyphicon glyphicon-circle-arrow-right">&nbsp;111</span>
-                        </div>
-                        <div class="col-md-2">
-                            <span class="glyphicon glyphicon-circle-arrow-right">&nbsp;111</span>
-                        </div>
-                        <div class="col-md-2">
-                            <a href="#">111</a>
-                        </div>
-                    </div>
-                </div>
-
-
-            </div>
-        </div>
+        <?php
+        echo $search_html;
+        ?>
     </div>
+    <hr>
 </div>
 
 <div class="bili-footer" style="background-color: #CCCCFF;">
