@@ -70,80 +70,187 @@ $a = mysqli_connect("127.0.0.1", "root", "", "bilibili");
     </div>
     <div class="row">
         <div class="col-md-12">
-                <div class="bili-search-filter">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <ul class="nav nav-pills">
-                                <li role="presentation" class="active"><a href="#">
-                                        <small>综合排序</small>
-                                    </a></li>
-                                <li role="presentation"><a href="#">
-                                        <small>最多点击</small>
-                                    </a></li>
-                                <li role="presentation"><a href="#">
-                                        <small>最新发布</small>
-                                    </a></li>
-                                <li role="presentation"><a href="#">
-                                        <small>最多弹幕</small>
-                                    </a></li>
-                                <li role="presentation"><a href="#">
-                                        <small>最多收藏</small>
-                                    </a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <br>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <ul class="nav nav-pills">
-                                <li role="presentation" class="active"><a href="#">
-                                        <small>全部时长</small>
-                                    </a></li>
-                                <li role="presentation"><a href="#">
-                                        <small>10分钟以下</small>
-                                    </a></li>
-                                <li role="presentation"><a href="#">
-                                        <small>10-30分钟</small>
-                                    </a></li>
-                                <li role="presentation"><a href="#">
-                                        <small>30-60分钟</small>
-                                    </a></li>
-                                <li role="presentation"><a href="#">
-                                        <small>60分钟以上</small>
-                                    </a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <br>
-
-                    <div class="row">
-                        <div class="col-md-12">
-                            <ul class="nav nav-pills">
-                                <li role="presentation" class="active"><a href="#">
-                                        <small>全部分区</small>
-                                    </a></li>
-                                <li role="presentation"><a href="#">
-                                        <small>游戏</small>
-                                    </a></li>
-                                <li role="presentation"><a href="#">
-                                        <small>音乐</small>
-                                    </a></li>
-                                <li role="presentation"><a href="#">
-                                        <small>影视</small>
-                                    </a></li>
-                                <li role="presentation"><a href="#">
-                                        <small>动画</small>
-                                    </a></li>
-                            </ul>
-                        </div>
+            <div class="bili-search-filter">
+                <div class="row">
+                    <div class="col-md-12">
+                        <ul class="nav nav-pills">
+                            <li role="presentation" class="active"><a href="#">
+                                    <small>综合排序</small>
+                                </a></li>
+                            <li role="presentation"><a href="#">
+                                    <small>最多点击</small>
+                                </a></li>
+                            <li role="presentation"><a href="#">
+                                    <small>最新发布</small>
+                                </a></li>
+                            <li role="presentation"><a href="#">
+                                    <small>最多弹幕</small>
+                                </a></li>
+                            <li role="presentation"><a href="#">
+                                    <small>最多收藏</small>
+                                </a></li>
+                        </ul>
                     </div>
                 </div>
+                <br>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <ul class="nav nav-pills">
+                            <li role="presentation" class="active"><a href="#">
+                                    <small>全部时长</small>
+                                </a></li>
+                            <li role="presentation"><a href="#">
+                                    <small>10分钟以下</small>
+                                </a></li>
+                            <li role="presentation"><a href="#">
+                                    <small>10-30分钟</small>
+                                </a></li>
+                            <li role="presentation"><a href="#">
+                                    <small>30-60分钟</small>
+                                </a></li>
+                            <li role="presentation"><a href="#">
+                                    <small>60分钟以上</small>
+                                </a></li>
+                        </ul>
+                    </div>
+                </div>
+                <br>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <ul class="nav nav-pills">
+                            <li role="presentation" class="active"><a href="#">
+                                    <small>全部分区</small>
+                                </a></li>
+                            <li role="presentation"><a href="#">
+                                    <small>游戏</small>
+                                </a></li>
+                            <li role="presentation"><a href="#">
+                                    <small>音乐</small>
+                                </a></li>
+                            <li role="presentation"><a href="#">
+                                    <small>影视</small>
+                                </a></li>
+                            <li role="presentation"><a href="#">
+                                    <small>动画</small>
+                                </a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <hr>
+    <div class="row bili-search-detail">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-3 bili-search-detail-img">
+                    <img src="images/cover/1.png" >
+                    <div>length</div>
+                </div>
+                <div class="col-md-9">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h3 style="margin-top: 0;">
+                                <span class="label label-default" style="width: 100%;">动画</span>&nbsp;<a href="#">银魂</a>
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p style="overflow: hidden;height: 80px;">春天晴空万里的一天，去赏花的万事屋的一行人，撞上了一样到那里去赏花的真选组。
+                                在赏花地点开始了万事屋和真选组之间的争斗，由于在有平民的地方动刀不好，
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <span class="glyphicon glyphicon-circle-arrow-right">&nbsp;111</span>
+                        </div>
+                        <div class="col-md-2">
+                            <span class="glyphicon glyphicon-circle-arrow-right">&nbsp;111</span>
+                        </div>
+                        <div class="col-md-2">
+                            <span class="glyphicon glyphicon-circle-arrow-right">&nbsp;111</span>
+                        </div>
+                        <div class="col-md-2">
+                            <a href="#">111</a>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
 </div>
 
+<div class="bili-footer" style="background-color: #CCCCFF;">
+    <div class="container">
+        <hr>
+        <div class="row">
+            <div class="col-md-4">
+                <div style="margin-bottom: 20px;">bili</div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div><a href="#"><p>关于我们</p></a></div>
+                        <div><a href="#"><p>友情链接</p></a></div>
+                    </div>
+                    <div class="col-md-4">
+                        <div><a href="#"><p>哔哩周边</p></a></div>
+                        <div><a href="#"><p>联系我们</p></a></div>
+                    </div>
+                    <div class="col-md-4">
+                        <div><a href="#"><p>加入我们</p></a></div>
+                        <div><a href="#"><p>官方认证</p></a></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 ">
+                <div style="margin-bottom: 20px;">传送门</div>
 
+                <div class="row">
+                    <div class="col-md-4">
+                        <div><a href="#"><p>帮助中心</p></a></div>
+                        <div><a href="#"><p>侵权申诉</p></a></div>
+                        <div><a href="#"><p>用户反馈</p></a></div>
+                    </div>
+                    <div class="col-md-4">
+                        <div><a href="#"><p>高级弹幕</p></a></div>
+                        <div><a href="#"><p>分院帽</p></a></div>
+                        <div><a href="#"><p>壁纸站</p></a></div>
+                    </div>
+                    <div class="col-md-4">
+                        <div><a href="#"><p>活动专题</p></a></div>
+                        <div><a href="#"><p>活动中心</p></a></div>
+                        <div><a href="#"><p>名人堂</p></a></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="col-md-4">
+                    <img src="images/icons/download.png">
+                    <a href="#"><p>手机端下载</p></a>
+                </div>
+                <div class="col-md-4">
+                    <img src="images/icons/weibo.png">
+                    <a href="#"><p>新浪微博</p></a>
+                </div>
+                <div class="col-md-4">
+                    <img src="images/icons/wechat.png">
+                    <a href="#"><p>官方微信</p></a>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <p>Copyright © 2017 By Lemon</p>
+            </div>
+        </div>
+    </div>
+
+</div>
 
 <script src="assets/jquery.min.js"></script>
 <script src="assets/bootstrap.min.js"></script>

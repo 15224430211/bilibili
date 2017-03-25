@@ -202,8 +202,12 @@ h4 {
     display: block;
 }
 
+.bili-footer > div > div > div:nth-child(2) {
+    border-left: solid 1px #e5e9ef;
+    border-right: solid 1px #e5e9ef;
+}
 
-.bili-search-search-bar{
+.bili-search-search-bar {
     margin-bottom: 20px;
 }
 
@@ -215,6 +219,17 @@ h4 {
 
 .bili-search-filter div > div > ul > li a {
     color: #000;
+}
+
+.bili-search-detail-img img {
+    width: 100%;
+}
+
+.bili-search-detail-img div {
+    position: absolute;
+    right: 15px;
+    bottom: 0;
+    line-height: 25px;
 }
 
 
