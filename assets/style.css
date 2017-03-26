@@ -219,7 +219,6 @@ h4 {
 
 .bili-search-filter div > div > ul > li a {
     color: #000;
-
 }
 
 .bili-search-detail-img img {
@@ -233,14 +232,12 @@ h4 {
     line-height: 25px;
 }
 
-.bili-search-detail-name > h4  {
-    display: inline-block;
-    width: 100%;
-
+.bili-search-detail-name > h4 {
+    display:flex;
+    margin-top: 0;
 }
 
 .bili-search-detail-name a {
     overflow: hidden;
-    word-break: break-all;
     white-space: nowrap;
 }

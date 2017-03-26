@@ -1,39 +1,44 @@
 <?php
+if (!isset($_GET['keyword'])) {
+    $_GET['keyword'] = "";
+}
+
+if (isset($_GET['order'])&&$_GET['order']=="click_count") {
+    $_GET['order'] = " animation_detail." . $_GET['order'];
+
+}elseif(isset($_GET['order'])&&$_GET['order']=="fav_count"){
+    $_GET['order'] = " animation_detail." . $_GET['order'];
+}
+elseif(isset($_GET['order'])&&$_GET['order']=="update_time"){
+    $_GET['order'] = " animation_detail." . $_GET['order'];
+}
+else {
+    $_GET['order'] = " (animation_detail.click_count*0.01 +
+    animation_detail.comment_count*0.099 + animation_detail.fav_count*0.6 +
+    animation_detail.coin_count*0.099) ";
+}
+
+
 $a = mysqli_connect("127.0.0.1", "root", "", "bilibili");
 $search_html = "";
 $sql = 'SELECT
-animation_detail.id,
-animation_detail.`name`,
-animation_detail.update_time,
-animation_detail.click_count,
-animation_detail.comment_count,
-animation_detail.fav_count,
-animation_detail.coin_count,
-animation_detail.image_name,
-animation_detail.length,
-animation_detail.detail,
-animation_detail.id,
-animation_detail.`name`,
-animation_detail.update_time,
-animation_detail.click_count,
-animation_detail.comment_count,
-animation_detail.fav_count,
-animation_detail.coin_count,
-animation_detail.image_name,
-animation_detail.length,
-animation_detail.detail,
-animation_detail.categoris_id,
+animation_detail.*,
 categoris.id,
 categoris.`name` AS fuck
 FROM
 animation_detail ,
 categoris
 WHERE
-categoris.id=animation_detail.categoris_id
+categoris.id=animation_detail.categoris_id AND
+animation_detail.`name` LIKE "%' . $_GET['keyword'] . '%"
+ORDER BY
+' . $_GET['order'] . ' DESC
 LIMIT 8';
 $result = mysqli_fetch_all(mysqli_query($a, $sql), MYSQLI_ASSOC);
 foreach ($result as $key => $value) {
-    $search_html .= '<div class="col-md-12">
+    $search_html .= '
+<div class="col-md-12">
+<hr>
             <div class="row">
                 <div class="col-md-3 bili-search-detail-img">
                     <img src="images/cover/' . $value['image_name'] . '.png" >
@@ -42,8 +47,8 @@ foreach ($result as $key => $value) {
                 <div class="col-md-8">
                     <div class="row">
                         <div class="col-md-12 bili-search-detail-name">
-                            <h4 style="margin-top: 0;display:flex;">
-                                <span class="label label-primary" style="display:inline-block;">1</span>&nbsp;<a href="#">' . $value['name'] . '</a>
+                            <h4 style="">
+                                <span class="label label-primary">1</span>&nbsp;<a href="#">' . $value['name'] . '</a>
                             </h4>
                         </div>
                     </div>
@@ -54,24 +59,20 @@ foreach ($result as $key => $value) {
                     </div>
                     <div class="row">
                         <div class="col-md-2">
-                            <span class="glyphicon glyphicon-play">&nbsp;' . $value['click_count'] . '</span>
+                        <span class="glyphicon glyphicon-play"></span>&nbsp;' . $value['click_count'] . '
                         </div>
                         <div class="col-md-2">
-                            <span class="glyphicon glyphicon-comment">&nbsp;' . $value['comment_count'] . '</span>
+                        <span class="glyphicon glyphicon-comment"></span>&nbsp;' . $value['comment_count'] . '
                         </div>
                         <div class="col-md-2">
-                            <span class="glyphicon glyphicon-time">&nbsp;' . substr($value['update_time'], 2, 9) . '</span>
+                        <span class="glyphicon glyphicon-time"></span>&nbsp;' . substr($value['update_time'], 2, 9) . '
                         </div>
                         <div class="col-md-2">up主:&nbsp;</div>
                     </div>
                 </div>
-
-
             </div>
         </div>';
 }
-
-
 ?>
 
 <!DOCTYPE html>
@@ -87,7 +88,6 @@ foreach ($result as $key => $value) {
     <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
     <link rel="stylesheet" type="text/css" href="assets/style.css"/>
     <style></style>
-
 </head>
 <body>
 <nav class="navbar navbar-default" style="margin-bottom:0px;">
@@ -119,9 +119,9 @@ foreach ($result as $key => $value) {
         </div>
         <div class="col-lg-5">
             <div class="input-group input-group-lg">
-                <input type="text" class="form-control" placeholder="Search for...">
+                <input id="bili-search-input" type="text" class="form-control" placeholder="Search for...">
       <span class="input-group-btn">
-          <button class="btn btn-info" type="button"><span class="glyphicon glyphicon-search"></span>&nbsp;Search
+          <button id="bili-search-submit" class="btn btn-info" type="button"><span class="glyphicon glyphicon-search"></span>&nbsp;Search
           </button>
       </span>
             </div>
@@ -211,7 +211,6 @@ foreach ($result as $key => $value) {
             </div>
         </div>
     </div>
-    <hr>
     <div class="row bili-search-detail">
         <?php
         echo $search_html;
@@ -219,7 +218,6 @@ foreach ($result as $key => $value) {
     </div>
     <hr>
 </div>
-
 <div class="bili-footer" style="background-color: #CCCCFF;">
     <div class="container">
         <hr>
@@ -243,7 +241,6 @@ foreach ($result as $key => $value) {
             </div>
             <div class="col-md-4 ">
                 <div style="margin-bottom: 20px;">传送门</div>
-
                 <div class="row">
                     <div class="col-md-4">
                         <div><a href="#"><p>帮助中心</p></a></div>
@@ -283,13 +280,19 @@ foreach ($result as $key => $value) {
             </div>
         </div>
     </div>
-
 </div>
 
 <script src="assets/jquery.min.js"></script>
 <script src="assets/bootstrap.min.js"></script>
 
 <script>
+
+
+    $("#bili-search-submit").click(function () {
+        var keyword = $("#bili-search-input").val();
+        var url = "/search.php?keyword=" + keyword;
+        window.location.href = url;
+    });
 
 </script>
 </body>
