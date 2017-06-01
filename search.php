@@ -143,8 +143,8 @@ foreach ($result as $key => $value) {
             <div class="bili-search-filter">
                 <div class="row">
                     <div class="col-md-12">
-                        <ul class="nav nav-pills">
-                            <li role="presentation" class="active"><a href="#">
+                        <ul class="nav nav-pills bili-search-filter-order">
+                            <li role="presentation" class="active"><a href="">
                                     <small>综合排序</small>
                                 </a></li>
                             <li role="presentation"><a href="#">
@@ -293,6 +293,8 @@ foreach ($result as $key => $value) {
         var url = "/search.php?keyword=" + keyword;
         window.location.href = url;
     });
+
+
 
 </script>
 </body>
